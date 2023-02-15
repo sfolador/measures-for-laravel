@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Sfolador\Measures\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MeasuresCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'measures-for-laravel';
 
     public $description = 'My command';
 
