@@ -4,6 +4,7 @@ use Sfolador\Measures\Facades\Measures as MeasuresFacade;
 use Sfolador\Measures\Measures;
 use Sfolador\Measures\MeasuresInterface;
 use Sfolador\Measures\Unit\Length\Length;
+use Sfolador\Measures\Unit\Temperature\Temperature;
 use Sfolador\Measures\Unit\Volume\Volume;
 use Sfolador\Measures\Unit\Weight\Weight;
 
@@ -29,6 +30,12 @@ it('can convert volume', function () {
     $measures = new Measures();
 
     expect($measures->volume('2.0l'))->toBeInstanceOf(Volume::class);
+});
+
+it('can convert a temperature', function () {
+    $measures = new Measures();
+
+    expect($measures->temperature('200ºC'))->toBeInstanceOf(Temperature::class);
 });
 
 it('can be instantiated with a facade', function () {
