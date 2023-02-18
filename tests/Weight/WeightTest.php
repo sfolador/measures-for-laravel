@@ -89,7 +89,6 @@ it('can convert from kg to ounces', function () {
     expect($round)->toBe(70.5479);
 });
 
-
 it('can convert from kg to lbs', function () {
     $weight = Weight::from('2 kg');
 
