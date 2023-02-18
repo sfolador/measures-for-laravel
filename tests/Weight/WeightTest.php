@@ -89,12 +89,12 @@ it('can convert from kg to ounces', function () {
     expect($round)->toBe(70.5479);
 });
 
-//it('can convert from kg to stones', function () {
-//    $weight = Weight::from('2 kg');
-//    $round = round($weight->toSt()->value, 4);
-//
-//    expect($round)->toBe(0.3175);
-//});
+it('can convert from kg to stones', function () {
+    $weight = Weight::from('2 kg');
+    $round = round($weight->toSt()->value, 4);
+
+    expect($round)->toBe(0.3149);
+});
 
 it('can convert from kg to lbs', function () {
     $weight = Weight::from('2 kg');
