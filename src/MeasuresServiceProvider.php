@@ -4,7 +4,6 @@ namespace Sfolador\Measures;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Sfolador\Measures\Commands\MeasuresCommand;
 
 class MeasuresServiceProvider extends PackageServiceProvider
 {
