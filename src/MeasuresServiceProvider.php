@@ -18,7 +18,7 @@ class MeasuresServiceProvider extends PackageServiceProvider
             ->name('measures-for-laravel');
     }
 
-    public function registeringPackage()
+    public function registeringPackage(): void
     {
         $this->app->bind(MeasuresInterface::class, function () {
             return new Measures();
