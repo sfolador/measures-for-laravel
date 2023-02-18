@@ -46,3 +46,55 @@ it('can correct units to a correct notation', function () {
         }
     }
 });
+
+it('can convert from mm to m', function () {
+    $length = Length::from('2mm');
+    expect($length->toM()->value)->toBe(0.002);
+});
+
+it('can convert from m to cm', function () {
+    $length = Length::from('2m');
+    expect($length->toCM()->value)->toBe(200.0);
+});
+
+it('can convert from m to km', function () {
+    $length = Length::from('2m');
+    expect($length->toKM()->value)->toBe(0.002);
+});
+
+it('can convert from m to miles', function () {
+    $length = Length::from('2m');
+
+    $rounded = round($length->toMi()->value, 9);
+
+    expect($rounded)->toBe(0.001242742);
+});
+
+it('can convert from m to nautical miles', function () {
+    $length = Length::from('2m');
+    $rounded = round($length->toNmi()->value, 9);
+    expect($rounded)->toBe(0.001079914);
+});
+
+it('can convert from miles to m', function () {
+    $length = Length::from('2mi');
+    expect($length->toMM()->value)->toBe(3218688.0);
+});
+
+it('can convert from miles to cm', function () {
+    $length = Length::from('2mi');
+    expect($length->toCM()->value)->toBe(321868.8);
+});
+
+it('can convert from miles to km', function () {
+    $length = Length::from('2mi');
+    expect($length->toKM()->value)->toBe(3.218688);
+});
+
+it('can convert from miles to nautical miles', function () {
+    $length = Length::from('2mi');
+
+    $rounded = round($length->toNmi()->value, 9);
+
+    expect($rounded)->toBe(1.737952484);
+});

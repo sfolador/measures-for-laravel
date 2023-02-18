@@ -27,30 +27,48 @@ use  \Sfolador\Measures\Unit\Length\Length;
 \Sfolador\Measures\Unit\Weight\Weight;
 
 $measure = Measures::length("2.0m");
-echo $measures->toCm();
-
-//outputs 200.0 cm
+echo $measures->toCm(); // 200.0 cm
 
 //or you can use the Length class directly
 
 $length = Length::from("2.0m");
-echo $length->toCm();
-
-//outputs 200.0 cm
+echo $length->toCm(); // 200.0 cm
 
 $measure = Measures::weight("2.0Kg");
-echo $measures->toG();
-
-//outputs 2000.0 g
+echo $measures->toG(); // 2000.0 g
 
 //or you can use the Weight class directly
 
 $length = Weight::from("2.0Kg");
-echo $length->toG();
-
-//outputs 2000.0 g
+echo $length->toG(); // 2000.0 g
 
 ```
+
+## Available units
+
+### Length
+
+- Millimeter
+- Centimeter
+- Meter
+- Kilometer
+- Inch
+- Foot
+- Yard
+- Mile
+- Nautical mile
+
+### Weight
+
+- Milligram
+- Gram
+- Kilogram
+- Ton
+- Ounce
+- Pound
+- Stone
+- Long ton
+- Short ton
 
 ## Testing
 

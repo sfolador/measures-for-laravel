@@ -20,8 +20,8 @@ class MeasuresServiceProvider extends PackageServiceProvider
 
     public function registeringPackage()
     {
-       $this->app->bind(MeasuresInterface::class, function () {
-           return new Measures();
-       });
+        $this->app->bind(MeasuresInterface::class, function () {
+            return new Measures();
+        });
     }
 }
