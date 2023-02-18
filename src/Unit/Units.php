@@ -11,4 +11,6 @@ interface Units
     public function to(float $value, Units $destination): float;
 
     public function convert(float $value, Units $destination): float;
+
+    public function correctNotation(): string;
 }

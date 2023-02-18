@@ -29,7 +29,9 @@ class Measure
         $destination = static::extractUnit($destination);
         $convertedValue = $this->unit->to($this->value, $destination);
 
-        return new static($convertedValue, $destination);
+        $this->value = $convertedValue;
+        $this->unit = $destination;
+        return $this;
     }
 
     public static function extractValue(string $expression): float
@@ -53,6 +55,17 @@ class Measure
 
     public function __toString(): string
     {
-        return $this->value.$this->unit;
+        return $this->value . $this->unit->correctNotation();
+    }
+
+    public function __call(string $name, array $arguments)
+    {
+        if (Str::startsWith($name, 'to')) {
+            $unit = Str::of($name)->after('to')->lower()->value();
+
+            return $this->to($unit);
+        }
+
+        throw new \BadMethodCallException("Method $name does not exist.");
     }
 }

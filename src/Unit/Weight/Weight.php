@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Sfolador\Measures\Unit\Length;
+namespace Sfolador\Measures\Unit\Weight;
 
 use Illuminate\Support\Str;
 use Sfolador\Measures\Unit\Measure;
 use Sfolador\Measures\Unit\Units;
 
-final class Length extends Measure
+class Weight extends Measure
 {
     public static function extractUnit(mixed $expression): mixed
     {
         if (is_string($expression)) {
             $expression = Str::of($expression)->trim()->lower()->squish()->value();
 
-            return UnitsOfLength::from($expression);
+            return UnitsOfWeight::from($expression);
         }
 
         if ($expression instanceof Units) {

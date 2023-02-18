@@ -1,7 +1,7 @@
 <?php
 
 use Sfolador\Measures\Unit\Length\Length;
-use Sfolador\Measures\Unit\UnitsOfLength;
+use Sfolador\Measures\Unit\Length\UnitsOfLength;
 
 it('can convert a length', function () {
     $length = Length::from('2cm');
@@ -30,14 +30,10 @@ it('can convert a length from short forms', function () {
         ->toBe(2.5);
 });
 
-
-
 it('can convert a length from different values', function () {
     $length = Length::from('2  cm');
 
     expect($length->toM())
         ->and($length->toM()->value)
         ->toBe(0.02);
-
-
 });

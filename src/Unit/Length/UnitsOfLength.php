@@ -1,6 +1,8 @@
 <?php
 
-namespace Sfolador\Measures\Unit;
+namespace Sfolador\Measures\Unit\Length;
+
+use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfLength: string implements Units
 {
@@ -57,4 +59,21 @@ enum UnitsOfLength: string implements Units
             self::NAUTICAL_MILE => $value / 1852,
         };
     }
+
+    public function correctNotation(): string
+    {
+        return match ($this) {
+            self::METER => 'm',
+            self::CENTIMETER => 'cm',
+            self::MILLIMETER => 'mm',
+            self::KILOMETER => 'Km',
+            self::INCH => 'in',
+            self::FOOT => 'ft',
+            self::YARD => 'yd',
+            self::MILE => 'mi',
+            self::NAUTICAL_MILE => 'nmi',
+        };
+    }
+
+
 }
