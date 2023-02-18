@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Sfolador\Measures\Unit;
 
+use BadMethodCallException;
 use Illuminate\Support\Str;
 use Sfolador\Measures\Utilities\SquishesStrings;
 
@@ -11,8 +12,25 @@ class Measure
 {
     use SquishesStrings;
 
+    public static string $unitClass = Units::class;
+
     final public function __construct(public float $value, public $unit)
     {
+    }
+
+    public static function extractUnit(mixed $expression): ?Units
+    {
+        if (is_string($expression) && ! empty($expression)) {
+            $expression = Str::of($expression)->trim()->lower()->squish()->value();
+
+            return (static::$unitClass)::tryFrom($expression);
+        }
+
+        if ($expression instanceof Units) {
+            return $expression;
+        }
+
+        return null;
     }
 
     public static function from(string $expression): static
@@ -31,17 +49,13 @@ class Measure
 
         $this->value = $convertedValue;
         $this->unit = $destination;
+
         return $this;
     }
 
     public static function extractValue(string $expression): float
     {
         return (float) preg_replace('/[^0-9.]/', '', $expression);
-    }
-
-    public static function extractUnit(mixed $expression): mixed
-    {
-        return preg_replace('/[^a-zA-Z]/', '', $expression);
     }
 
     public static function getValueAndUnit($expression): array
@@ -55,7 +69,12 @@ class Measure
 
     public function __toString(): string
     {
-        return $this->value . $this->unit->correctNotation();
+        return $this->value.' '.$this->unit->correctNotation();
+    }
+
+    public function unitClass(): string
+    {
+        return static::$unitClass;
     }
 
     public function __call(string $name, array $arguments)
@@ -66,6 +85,6 @@ class Measure
             return $this->to($unit);
         }
 
-        throw new \BadMethodCallException("Method $name does not exist.");
+        throw new BadMethodCallException("Method $name does not exist.");
     }
 }

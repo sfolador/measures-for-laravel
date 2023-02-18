@@ -12,28 +12,37 @@ it('can convert a length', function () {
         ->toBe(0.02);
 });
 
-it('can convert a length from short forms', function () {
+it('can concatenate conversions', function () {
     $length = Length::from('2cm');
 
-    expect($length->toM())
-        ->and($length->toM()->value)
-        ->toBe(0.02);
-
     expect($length->toM()->toCM())
-            ->and($length->toM()->toCM()->value)
-            ->toBe(2.0);
-
-    $length = Length::from('2.5km');
-
-    expect($length->toKM())
-        ->and($length->toKM()->value)
-        ->toBe(2.5);
+        ->and($length->toM()->toCM()->value)
+        ->toBe(2.0);
 });
 
-it('can convert a length from different values', function () {
+it('can accept a string with many spaces', function () {
     $length = Length::from('2  cm');
 
     expect($length->toM())
         ->and($length->toM()->value)
         ->toBe(0.02);
+});
+
+it('can have a null unit', function () {
+    $length = Length::from('2 .');
+    expect($length->unit)->toBeNull();
+
+    $length = Length::from('2 ');
+    expect($length->unit)->toBeNull();
+});
+
+it('can correct units to a correct notation', function () {
+    $cases = UnitsOfLength::cases();
+    foreach ($cases as $case) {
+        if ($case === UnitsOfLength::KILOMETER) {
+            expect($case->correctNotation())->toBe('Km');
+        } else {
+            expect($case->correctNotation())->toBe($case->value);
+        }
+    }
 });

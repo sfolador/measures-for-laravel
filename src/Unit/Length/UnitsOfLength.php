@@ -74,6 +74,4 @@ enum UnitsOfLength: string implements Units
             self::NAUTICAL_MILE => 'nmi',
         };
     }
-
-
 }

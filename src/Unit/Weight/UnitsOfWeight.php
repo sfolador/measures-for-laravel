@@ -73,6 +73,4 @@ enum UnitsOfWeight: string implements Units
             self::LONG_TON => 'lton',
         };
     }
-
-
 }
