@@ -23,8 +23,12 @@ class Measure
         $unit = null;
         if (! empty($expression)) {
             $expression = Str::of($expression)->trim()->lower()->squish()->value();
-            //   var_dump($expression);
             $unit = (static::$unitClass)::tryFrom($expression);
+
+            if (! $unit) {
+                $unit = (static::$unitClass)::extendedValues($expression);
+            }
+
         }
 
         return $unit;

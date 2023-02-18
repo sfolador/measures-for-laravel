@@ -30,7 +30,7 @@ enum UnitsOfTemperature: string implements Units
         return match ($this) {
             self::CELSIUS_OTHER, self::CELSIUS => $value - 273.15,
             self::FAHRENHEIT_OTHER, self::FAHRENHEIT => $value * 9 / 5 - 459.67,
-            self::KELVIN, self::KELVIN_OTHER,self::KELVIN_DEG => $value,
+            self::KELVIN, self::KELVIN_OTHER, self::KELVIN_DEG => $value,
         };
     }
 
@@ -39,7 +39,7 @@ enum UnitsOfTemperature: string implements Units
         return match ($this) {
             self::CELSIUS, self::CELSIUS_OTHER => 'ºC',
             self::FAHRENHEIT, self::FAHRENHEIT_OTHER => 'ºF',
-            self::KELVIN, self::KELVIN_OTHER,self::KELVIN_DEG => 'ºK',
+            self::KELVIN, self::KELVIN_OTHER, self::KELVIN_DEG => 'ºK',
         };
     }
 
@@ -54,5 +54,16 @@ enum UnitsOfTemperature: string implements Units
     public function to(float $value, Units $destination): float
     {
         return $this->convert($value, $destination);
+    }
+
+    public static function extendedValues(string $unitName): self
+    {
+
+        return match ($unitName) {
+            'celsius' => self::CELSIUS,
+            'fahrenheit' => self::FAHRENHEIT,
+            'kelvin' => self::KELVIN
+        };
+
     }
 }

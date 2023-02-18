@@ -31,7 +31,7 @@ it('can accept a string with many spaces', function () {
 it('cannot have a null unit', function () {
     $length = Length::from('2 .');
     expect($length->unit)->toBeNull();
-})->expectException(BadMethodCallException::class, 'Invalid unit');
+})->expectException(InvalidArgumentException::class, 'Invalid unit name');
 
 it('can correct units to a correct notation', function () {
     $cases = UnitsOfLength::cases();

@@ -129,3 +129,19 @@ it('can correct units to a correct notation', function () {
         }
     }
 });
+
+
+
+it('can use extended names to convert units', function () {
+    $volume = Temperature::from('100 Celsius');
+
+    $round = round($volume->toFahrenheit()->value);
+    expect($round)->toBe(212.0);
+
+    $round = round($volume->toKelvin()->value);
+    expect($round)->toBe(373.0);
+
+    $round = round($volume->toCelsius()->value, 1);
+    expect($round)->toBe(100.0);
+
+});

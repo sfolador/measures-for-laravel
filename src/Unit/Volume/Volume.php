@@ -15,6 +15,14 @@ use Sfolador\Measures\Unit\Measure;
  * @method Volume toGal() Convert to gallons
  * @method Volume toPt() Convert to pints
  * @method Volume toCup() Convert to cups
+ * @method Volume toMilliliters() Convert to milliliters
+ * @method Volume toLiters() Convert to liters
+ * @method Volume toCubicMeters() Convert to cubic meters
+ * @method Volume toCubicFeet() Convert to cubic feet
+ * @method Volume toCubicInches() Convert to cubic inches
+ * @method Volume toGallons() Convert to gallons
+ * @method Volume toPints() Convert to pints
+ * @method Volume toCups() Convert to cups
  */
 class Volume extends Measure
 {

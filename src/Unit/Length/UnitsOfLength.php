@@ -2,6 +2,7 @@
 
 namespace Sfolador\Measures\Unit\Length;
 
+use InvalidArgumentException;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfLength: string implements Units
@@ -73,5 +74,23 @@ enum UnitsOfLength: string implements Units
             self::MILE => 'mi',
             self::NAUTICAL_MILE => 'nmi',
         };
+    }
+
+    public static function extendedValues(string $unitName): self
+    {
+
+        return match ($unitName) {
+            'meters' => self::METER,
+            'centimeters' => self::CENTIMETER,
+            'millimeters' => self::MILLIMETER,
+            'kilometers' => self::KILOMETER,
+            'inches' => self::INCH,
+            'feet' => self::FOOT,
+            'yards' => self::YARD,
+            'miles' => self::MILE,
+            'nautical_miles' => self::NAUTICAL_MILE,
+            default => throw new InvalidArgumentException('Invalid unit name'),
+        };
+
     }
 }
