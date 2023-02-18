@@ -70,6 +70,23 @@ echo $length->toG(); // 2000.0 g
 - Long ton
 - Short ton
 
+### Volume
+
+- Milliliter
+- Liter
+- Cubic meter
+- Cubic inch
+- Cubic foot
+- Gallon
+- Pint
+- Cup
+
+### Temperature
+
+- Celsius
+- Fahrenheit
+- Kelvin
+
 ## Todos
 
 - [x] Add volume units
