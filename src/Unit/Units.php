@@ -13,4 +13,6 @@ interface Units
     public function convert(float $value, Units $destination): float;
 
     public function correctNotation(): string;
+
+    public static function extendedValues(string $unitName): self;
 }

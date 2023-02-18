@@ -95,3 +95,25 @@ it('can correct units to a correct notation', function () {
         expect($case->correctNotation())->toBe($case->value);
     }
 });
+
+it('can use extended names to convert units', function () {
+    $volume = Volume::from('2 liters');
+
+    $round = round($volume->toCubicMeters()->value, 5);
+    expect($round)->toBe(0.002);
+
+    $round = round($volume->toCubicFeet()->value, 9);
+    expect($round)->toBe(0.070629333);
+
+    $round = round($volume->toCubicInches()->value, 7);
+    expect($round)->toBe(122.0474882);
+
+    $round = round($volume->toGallons()->value, 6);
+    expect($round)->toBe(0.528344);
+
+    $round = round($volume->toPints()->value, 6);
+    expect($round)->toBe(4.226753);
+
+    $round = round($volume->toCups()->value, 4);
+    expect($round)->toBe(8.4535);
+});

@@ -2,6 +2,7 @@
 
 namespace Sfolador\Measures\Unit\Weight;
 
+use Exception;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfWeight: string implements Units
@@ -25,8 +26,8 @@ enum UnitsOfWeight: string implements Units
             self::TON => $value * 1000000,
             self::OUNCE => $value * 28.349523125,
             self::POUND => $value * 453.59237,
-            self::STONE => $value / 6350.29318,
-            self::SHORT_TON => $value * 907184.74,
+            self::STONE => $value * 6350.29318,
+            self::SHORT_TON => $value * 907184.9,
             self::LONG_TON => $value * 1016046.9088,
         };
     }
@@ -40,8 +41,8 @@ enum UnitsOfWeight: string implements Units
             self::TON => $value / 1000000,
             self::OUNCE => $value / 28.349523125,
             self::POUND => $value / 453.59237,
-            self::STONE => $value * 6350.29318,
-            self::SHORT_TON => $value / 907184.74,
+            self::STONE => $value / 6350.29318,
+            self::SHORT_TON => $value / 907184.9 ,
             self::LONG_TON => $value / 1016046.9088,
         };
     }
@@ -53,8 +54,9 @@ enum UnitsOfWeight: string implements Units
 
     public function convert(float $value, Units $destination): float
     {
-        $valueInMeters = $this->convertToBase($value);
-        $value = $destination->convertFromBase($valueInMeters);
+        $valueInGrams = $this->convertToBase($value);
+
+        $value = $destination->convertFromBase($valueInGrams);
 
         return $value;
     }
@@ -71,6 +73,22 @@ enum UnitsOfWeight: string implements Units
             self::STONE => 'st',
             self::SHORT_TON => 'ton',
             self::LONG_TON => 'lton',
+        };
+    }
+
+    public static function extendedValues(string $unitName): self
+    {
+        return match ($unitName) {
+            'milligrams' => self::MILLIGRAM,
+            'grams' => self::GRAM,
+            'kilograms' => self::KILOGRAM,
+            'tons' => self::TON,
+            'ounces' => self::OUNCE,
+            'pounds' => self::POUND,
+            'stones' => self::STONE,
+            'shorttons' => self::SHORT_TON,
+            'longtons' => self::LONG_TON,
+            default => throw new Exception('Invalid unit name'),
         };
     }
 }

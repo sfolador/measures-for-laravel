@@ -89,6 +89,13 @@ it('can convert from kg to ounces', function () {
     expect($round)->toBe(70.5479);
 });
 
+it('can convert from kg to stones', function () {
+    $weight = Weight::from('2 kg');
+    $round = round($weight->toSt()->value, 4);
+
+    expect($round)->toBe(0.3149);
+});
+
 it('can convert from kg to lbs', function () {
     $weight = Weight::from('2 kg');
 
@@ -125,4 +132,29 @@ it('can convert from tons to lbs', function () {
 
     $round = round($weight->toLb()->value, 8);
     expect($round)->toBe(4409.2452437);
+});
+
+it('can use extended names to convert units', function () {
+    $weight = Weight::from('2 grams');
+
+    expect($weight->toKilograms()->value)->toBe(0.002);
+
+    $round = round($weight->toOunces()->value, 8);
+    expect($round)->toBe(0.07054792);
+
+    $round = round($weight->toPounds()->value, 10);
+    expect($round)->toBe(0.0044092452);
+
+    $round = round($weight->toTons()->value, 10);
+    expect($round)->toBe(0.000002);
+
+    $round = round($weight->toGrams()->value, 3);
+    expect($round)->toBe(2.0);
+
+    $round = round($weight->toStones()->value, 10);
+    expect($round)->toBe(0.0003149461);
+
+    $weight = Weight::from('2000 Kilograms');
+    $round = round($weight->toShortTons()->value, 10);
+    expect($round)->toBe(2.204622233);
 });

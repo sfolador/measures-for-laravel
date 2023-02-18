@@ -14,23 +14,23 @@ class Measure
 
     public static string $unitClass = Units::class;
 
-    final public function __construct(public float $value, public mixed $unit)
+    final public function __construct(public float $value, public Units $unit)
     {
     }
 
-    public static function extractUnit(string|Units $expression): ?Units
+    public static function detectUnit(string $expression): ?Units
     {
-        if (is_string($expression) && ! empty($expression)) {
+        $unit = null;
+        if (! empty($expression)) {
             $expression = Str::of($expression)->trim()->lower()->squish()->value();
+            $unit = (static::$unitClass)::tryFrom($expression);
 
-            return (static::$unitClass)::tryFrom($expression);
+            if (! $unit) {
+                $unit = (static::$unitClass)::extendedValues($expression);
+            }
         }
 
-        if ($expression instanceof Units) {
-            return $expression;
-        }
-
-        return null;
+        return $unit;
     }
 
     public static function from(string $expression): static
@@ -44,13 +44,14 @@ class Measure
 
     public function to(string|Units $destination): static
     {
-        $destination = static::extractUnit($destination);
+        if (is_string($destination)) {
+            $destination = static::detectUnit($destination);
+        }
 
         if ($destination === null) {
             throw new BadMethodCallException('Invalid unit.');
         }
 
-        /* @phpstan-ignore-next-line */
         $convertedValue = $this->unit->to($this->value, $destination);
 
         $this->value = $convertedValue;
@@ -59,25 +60,28 @@ class Measure
         return $this;
     }
 
-    public static function extractValue(string $expression): float
+    public static function extractValue(string $expression): ?string
     {
-        return (float) preg_replace('/[^0-9.]/', '', $expression);
+        return preg_replace('/[^\d+.]/', '', $expression);
     }
 
     public static function getValueAndUnit(string $expression): array
     {
         $value = static::extractValue($expression);
-        /* @phpstan-ignore-next-line */
-        $expression = Str::remove($value, $expression);
 
-        $unit = static::extractUnit($expression);
+        $expression = Str::remove((string) $value, $expression);
 
-        return [$value, $unit];
+        $unit = static::detectUnit($expression);
+
+        if ($unit === null) {
+            throw new BadMethodCallException('Invalid unit.');
+        }
+
+        return [(float) $value, $unit];
     }
 
     public function __toString(): string
     {
-        /* @phpstan-ignore-next-line */
         return $this->value.' '.$this->unit->correctNotation();
     }
 
@@ -87,7 +91,7 @@ class Measure
     }
 
     /**
-     * @return mixed
+     * @return Measure
      */
     public function __call(string $name, array $arguments)
     {

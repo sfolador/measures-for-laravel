@@ -118,14 +118,27 @@ it('can convert from kelvin to fahrenheit with degrees symbol', function () {
 it('can correct units to a correct notation', function () {
     $cases = UnitsOfTemperature::cases();
     foreach ($cases as $case) {
-        if ($case === UnitsOfTemperature::CELSIUS || $case === UnitsOfTemperature::CELSIUS_OTHER) {
+        if ($case === UnitsOfTemperature::CELSIUS) {
             expect($case->correctNotation())->toBe('ºC');
-        } elseif ($case === UnitsOfTemperature::FAHRENHEIT || $case === UnitsOfTemperature::FAHRENHEIT_OTHER) {
+        } elseif ($case === UnitsOfTemperature::FAHRENHEIT) {
             expect($case->correctNotation())->toBe('ºF');
-        } elseif ($case === UnitsOfTemperature::KELVIN || $case === UnitsOfTemperature::KELVIN_OTHER || $case === UnitsOfTemperature::KELVIN_DEG) {
+        } elseif ($case === UnitsOfTemperature::KELVIN || $case === UnitsOfTemperature::KELVIN_DEG) {
             expect($case->correctNotation())->toBe('ºK');
         } else {
             expect($case->correctNotation())->toBe($case->value);
         }
     }
+});
+
+it('can use extended names to convert units', function () {
+    $volume = Temperature::from('100 Celsius');
+
+    $round = round($volume->toFahrenheit()->value);
+    expect($round)->toBe(212.0);
+
+    $round = round($volume->toKelvin()->value);
+    expect($round)->toBe(373.0);
+
+    $round = round($volume->toCelsius()->value, 1);
+    expect($round)->toBe(100.0);
 });

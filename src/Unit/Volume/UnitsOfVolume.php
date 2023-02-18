@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Sfolador\Measures\Unit\Volume;
 
+use InvalidArgumentException;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfVolume: string implements Units
@@ -70,6 +71,21 @@ enum UnitsOfVolume: string implements Units
             self::GALLON => 'gal',
             self::PINT => 'pt',
             self::CUP => 'cup',
+        };
+    }
+
+    public static function extendedValues(string $unitName): Units
+    {
+        return match ($unitName) {
+            'millilitres','milliliters' => self::MILLILITER,
+            'litres','liters' => self::LITER,
+            'cubicmeters' => self::CUBIC_METER,
+            'cubicinches' => self::CUBIC_INCH,
+            'cubicfeet' => self::CUBIC_FOOT,
+            'gallons' => self::GALLON,
+            'pints' => self::PINT,
+            'cups' => self::CUP,
+            default => throw new InvalidArgumentException('Invalid unit name'),
         };
     }
 }
