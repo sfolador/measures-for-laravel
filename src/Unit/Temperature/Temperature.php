@@ -18,9 +18,9 @@ class Temperature extends Measure
 {
     public static string $unitClass = UnitsOfTemperature::class;
 
-    public static function detectUnit(mixed $expression): ?Units
+    public static function detectUnit(string $expression): ?Units
     {
-        if (is_string($expression) && ! empty($expression)) {
+        if (! empty($expression)) {
             $expression = Str::of($expression)->trim()->lower()->squish()->value();
 
             if (Str::of($expression)->contains('º')) {

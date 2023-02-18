@@ -2,6 +2,7 @@
 
 namespace Sfolador\Measures\Unit\Temperature;
 
+use Exception;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfTemperature: string implements Units
@@ -57,7 +58,8 @@ enum UnitsOfTemperature: string implements Units
         return match ($unitName) {
             'celsius' => self::CELSIUS,
             'fahrenheit' => self::FAHRENHEIT,
-            'kelvin' => self::KELVIN
+            'kelvin' => self::KELVIN,
+            default => throw new Exception('Invalid unit name'),
         };
     }
 }
