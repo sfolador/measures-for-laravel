@@ -15,11 +15,10 @@ it('can return the name of the unit class', function () {
     expect($measure->unitClass())->toBe(Units::class);
 });
 
-it('throws an exception if a unit is not detected',function(){
-    Measure::from("100");
+it('throws an exception if a unit is not detected', function () {
+    Measure::from('100');
 })->throws(BadMethodCallException::class, 'Invalid unit.');
 
-
-it('throws an exception if a destination unit is not detected',function(){
-    Weight::from("100g")->to("");
+it('throws an exception if a destination unit is not detected', function () {
+    Weight::from('100g')->to('');
 })->throws(BadMethodCallException::class, 'Invalid unit.');

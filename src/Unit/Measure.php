@@ -28,7 +28,6 @@ class Measure
             if (! $unit) {
                 $unit = (static::$unitClass)::extendedValues($expression);
             }
-
         }
 
         return $unit;

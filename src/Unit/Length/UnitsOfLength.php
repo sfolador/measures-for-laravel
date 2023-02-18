@@ -78,7 +78,6 @@ enum UnitsOfLength: string implements Units
 
     public static function extendedValues(string $unitName): self
     {
-
         return match ($unitName) {
             'meters' => self::METER,
             'centimeters' => self::CENTIMETER,
@@ -91,6 +90,5 @@ enum UnitsOfLength: string implements Units
             'nautical_miles' => self::NAUTICAL_MILE,
             default => throw new InvalidArgumentException('Invalid unit name'),
         };
-
     }
 }

@@ -9,7 +9,7 @@ it('can convert a g to kg', function () {
     expect($weight->toKg())
         ->and($weight->toKg()->value)
         ->toBe(0.002)
-        ->and((string)$weight->toKg())->toBe('0.002 Kg');
+        ->and((string) $weight->toKg())->toBe('0.002 Kg');
 });
 
 it('can convert to tons', function () {
@@ -134,7 +134,6 @@ it('can convert from tons to lbs', function () {
     expect($round)->toBe(4409.2452437);
 });
 
-
 it('can use extended names to convert units', function () {
     $weight = Weight::from('2 grams');
 
@@ -152,10 +151,8 @@ it('can use extended names to convert units', function () {
     $round = round($weight->toGrams()->value, 3);
     expect($round)->toBe(2.0);
 
-
     $round = round($weight->toStones()->value, 10);
     expect($round)->toBe(0.0003149461);
-
 
     $weight = Weight::from('2000 Kilograms');
     $round = round($weight->toShortTons()->value, 10);

@@ -96,7 +96,6 @@ it('can correct units to a correct notation', function () {
     }
 });
 
-
 it('can use extended names to convert units', function () {
     $volume = Volume::from('2 liters');
 

@@ -26,9 +26,8 @@ class Temperature extends Measure
             if (Str::of($expression)->contains('º')) {
                 $expression = Str::of($expression)->replace('º', '')->append('deg')->value();
             }
-
-
         }
+
         return parent::detectUnit($expression);
     }
 }
