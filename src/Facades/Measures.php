@@ -3,14 +3,12 @@
 namespace Sfolador\Measures\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use Sfolador\Measures\MeasuresInterface;
 
-/**
- * @see \Sfolador\Measures\Measures
- */
 class Measures extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return \Sfolador\Measures\Measures::class;
+        return MeasuresInterface::class;
     }
 }

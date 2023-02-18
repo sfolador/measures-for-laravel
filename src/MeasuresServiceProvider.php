@@ -4,7 +4,6 @@ namespace Sfolador\Measures;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Sfolador\Measures\Commands\MeasuresCommand;
 
 class MeasuresServiceProvider extends PackageServiceProvider
 {
@@ -17,5 +16,12 @@ class MeasuresServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('measures-for-laravel');
+    }
+
+    public function registeringPackage()
+    {
+        $this->app->bind(MeasuresInterface::class, function () {
+            return new Measures();
+        });
     }
 }
