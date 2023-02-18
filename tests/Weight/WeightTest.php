@@ -89,6 +89,14 @@ it('can convert from kg to ounces', function () {
     expect($round)->toBe(70.5479);
 });
 
+it('can convert from kg to lbs', function () {
+    $weight = Weight::from('2 kg');
+
+    $round = round($weight->toLb()->value, 4);
+
+    expect($round)->toBe(4.4092);
+});
+
 it('can convert from kg to tons', function () {
     $weight = Weight::from('2 kg');
     expect($weight->toT()->value)->toBe(0.002);
