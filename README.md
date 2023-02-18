@@ -72,7 +72,7 @@ echo $length->toG(); // 2000.0 g
 
 ## Todos
 
-- [ ] Add volume units
+- [x] Add volume units
 - [ ] Add temperature units
 - [ ] Add area units
 - [ ] Add speed units
