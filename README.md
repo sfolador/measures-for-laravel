@@ -70,11 +70,28 @@ echo $length->toG(); // 2000.0 g
 - Long ton
 - Short ton
 
+## Todos
+
+- [ ] Add volume units
+- [ ] Add temperature units
+- [ ] Add area units
+- [ ] Add speed units
+- [ ] Add time units
+- [ ] Add pressure units
+- [ ] Add energy units
+- [ ] Add power units
+- [ ] Add force units
+- [ ] Add frequency units
+- [ ] Add data units
+- [ ] Add angle units
+- [ ] Add acceleration units
+
 ## Testing
 
 ```bash
 composer test
 ```
+
 
 ## Changelog
 
