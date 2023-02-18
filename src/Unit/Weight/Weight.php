@@ -4,7 +4,6 @@ namespace Sfolador\Measures\Unit\Weight;
 
 use Sfolador\Measures\Unit\Measure;
 
-
 /**
  * @method Weight toG() Convert to grams
  * @method Weight toMg() Convert to milligrams

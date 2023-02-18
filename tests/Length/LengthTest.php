@@ -76,7 +76,6 @@ it('can convert from m to nautical miles', function () {
     expect($rounded)->toBe(0.001079914);
 });
 
-
 it('can convert from m to feet', function () {
     $length = Length::from('2m');
     $rounded = round($length->toFt()->value, 8);
@@ -89,7 +88,7 @@ it('can convert from m to inches', function () {
     expect($rounded)->toBe(78.74015748);
 });
 
-it('can convert from m to yards',function(){
+it('can convert from m to yards', function () {
     $length = Length::from('2m');
     $rounded = round($length->toYd()->value, 8);
     expect($rounded)->toBe(2.1872266);
@@ -118,7 +117,6 @@ it('can convert from miles to nautical miles', function () {
     expect($rounded)->toBe(1.737952484);
 });
 
-
 it('can convert from miles to feet', function () {
     $length = Length::from('2mi');
     $rounded = round($length->toFt()->value, 8);
@@ -131,7 +129,7 @@ it('can convert from miles to inches', function () {
     expect($rounded)->toBe(126720.0);
 });
 
-it('can convert from miles to yards',function(){
+it('can convert from miles to yards', function () {
     $length = Length::from('2mi');
     $rounded = round($length->toYd()->value, 8);
     expect($rounded)->toBe(3520.0);
