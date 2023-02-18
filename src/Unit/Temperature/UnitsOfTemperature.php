@@ -9,10 +9,8 @@ enum UnitsOfTemperature: string implements Units
     case CELSIUS = 'cdeg';
     case FAHRENHEIT = 'fdeg';
 
-
     case KELVIN = 'K';
     case KELVIN_DEG = 'kdeg';
-
 
     public function convertToBase(float $value): float
     {
@@ -56,12 +54,10 @@ enum UnitsOfTemperature: string implements Units
 
     public static function extendedValues(string $unitName): self
     {
-
         return match ($unitName) {
             'celsius' => self::CELSIUS,
             'fahrenheit' => self::FAHRENHEIT,
             'kelvin' => self::KELVIN
         };
-
     }
 }
