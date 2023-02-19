@@ -18,16 +18,4 @@ class Temperature extends Measure
 {
     public static string $unitClass = UnitsOfTemperature::class;
 
-    public static function detectUnit(string $expression): ?Units
-    {
-        if (! empty($expression)) {
-            $expression = Str::of($expression)->trim()->lower()->squish()->value();
-
-            if (Str::of($expression)->contains('º')) {
-                $expression = Str::of($expression)->replace('º', '')->append('deg')->value();
-            }
-        }
-
-        return parent::detectUnit($expression);
-    }
 }

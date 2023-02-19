@@ -56,9 +56,9 @@ enum UnitsOfTemperature: string implements Units
     public static function extendedValues(string $unitName): self
     {
         return match ($unitName) {
-            'celsius' => self::CELSIUS,
-            'fahrenheit' => self::FAHRENHEIT,
-            'kelvin' => self::KELVIN,
+            'celsius','ºC','ºc' => self::CELSIUS,
+            'fahrenheit','ºF','ºf' => self::FAHRENHEIT,
+            'kelvin', 'ºK' ,'ºk'=> self::KELVIN,
             default => throw new Exception('Invalid unit name'),
         };
     }
