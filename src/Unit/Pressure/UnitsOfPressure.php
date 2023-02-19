@@ -20,7 +20,6 @@ enum UnitsOfPressure: string implements Units
     case MMHG = 'mmhg';
     case INHG = 'inhg';
 
-
     public function conversionFactor(): float
     {
         return match ($this) {
@@ -48,7 +47,6 @@ enum UnitsOfPressure: string implements Units
             self::MMHG => 'mmHg',
             self::INHG => 'inHg',
         };
-
     }
 
     public static function extendedValues(string $unitName): Units
@@ -63,10 +61,7 @@ enum UnitsOfPressure: string implements Units
             'torrs' => self::TORR,
             'millimeters of mercury', 'millimeters_of_mercury', 'millimetersofmercury','millimeterofmercury' => self::MMHG,
             'inches of mercury', 'inches_of_mercury', 'inchesofmercury' => self::INHG,
-            default => throw new InvalidArgumentException('Invalid unit name: ' . $unitName),
-
+            default => throw new InvalidArgumentException('Invalid unit name: '.$unitName),
         };
     }
-
-
 }

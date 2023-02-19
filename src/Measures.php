@@ -65,7 +65,7 @@ class Measures implements MeasuresInterface
             Area::class,
             Speed::class,
             Time::class,
-            Pressure::class
+            Pressure::class,
         ];
 
         $results = null;

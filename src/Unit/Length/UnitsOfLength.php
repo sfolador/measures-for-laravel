@@ -21,8 +21,6 @@ enum UnitsOfLength: string implements Units
     case MILE = 'mi';
     case NAUTICAL_MILE = 'nmi';
 
-
-
     public function conversionFactor(): float
     {
         return match ($this) {

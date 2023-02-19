@@ -26,7 +26,6 @@ class Measure
             $unit = (static::$unitClass)::tryFrom($expression);
 
             if (! $unit) {
-
                 $unit = (static::$unitClass)::extendedValues($expression);
             }
         }

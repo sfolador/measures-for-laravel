@@ -1,11 +1,10 @@
 <?php
 
-
 use Sfolador\Measures\Unit\Traits\ConvertsWithBase;
 
 it('can convert to base', function () {
-
-    $a = new class {
+    $a = new class
+    {
         use ConvertsWithBase;
     };
 
@@ -13,10 +12,9 @@ it('can convert to base', function () {
         ->toBeFloat();
 });
 
-
 it('can convert from base', function () {
-
-    $a = new class {
+    $a = new class
+    {
         use ConvertsWithBase;
     };
 
