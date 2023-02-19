@@ -87,7 +87,7 @@ enum UnitsOfLength: string implements Units
             'feet' => self::FOOT,
             'yards' => self::YARD,
             'miles' => self::MILE,
-            'nautical_miles' => self::NAUTICAL_MILE,
+            'nautical_miles','nautical miles' => self::NAUTICAL_MILE,
             default => throw new InvalidArgumentException('Invalid unit name'),
         };
     }
