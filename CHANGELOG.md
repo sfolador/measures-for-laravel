@@ -2,6 +2,10 @@
 
 All notable changes to `measures-for-laravel` will be documented in this file.
 
+## Added remaining units - 2023-02-19
+
+Power, Energy, Pressure, Data, Angle
+
 ## Area, Speed and Time units - 2023-02-19
 
 added area, speed and time units
