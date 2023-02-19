@@ -73,7 +73,6 @@ it('can convert an energy', function () {
     expect($measures->energy('1 J'))->toBeInstanceOf(Energy::class);
 });
 
-
 it('can be instantiated with a facade', function () {
     $measures = MeasuresFacade::length('2.0m');
     expect($measures)->toBeInstanceOf(Length::class);

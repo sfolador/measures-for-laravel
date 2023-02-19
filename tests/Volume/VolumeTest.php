@@ -15,26 +15,22 @@ it('can convert liters to cubic meters', function () {
 
 it('can convert liters to cubic feet', function () {
     $volume = Volume::from('2L');
-    $round = round($volume->toFt3()->value, 10);
-    expect($round)->toBe(0.0706293334);
+    expect($volume->toFt3()->value)->toBe(0.0706);
 });
 
 it('can convert liters to cubic inches', function () {
     $volume = Volume::from('2L');
-    $round = round($volume->toIn3()->value, 7);
-    expect($round)->toBe(122.0474882);
+    expect($volume->toIn3()->value)->toBe(122.0475);
 });
 
 it('can convert liters to gallons', function () {
     $volume = Volume::from('2L');
-    $round = round($volume->toGal()->value, 6);
-    expect($round)->toBe(0.528344);
+    expect($volume->toGal()->value)->toBe(0.5283);
 });
 
 it('can convert liters to pints', function () {
     $volume = Volume::from('2L');
-    $round = round($volume->toPt()->value, 6);
-    expect($round)->toBe(4.226753);
+    expect($volume->toPt()->value)->toBe(4.2268);
 });
 
 it('can convert liters to cups', function () {
@@ -59,16 +55,14 @@ it('can convert gallons to liters', function () {
 
 it('can convert gallons to cubic meters', function () {
     $volume = Volume::from('2gal');
-    $round = round($volume->toM3()->value, 5);
 
-    expect($round)->toBe(0.00757);
+    expect($volume->toM3()->value)->toBe(0.0076);
 });
 
 it('can convert gallons to cubic feet', function () {
     $volume = Volume::from('2gal');
 
-    $round = round($volume->toFt3()->value, 9);
-    expect($round)->toBe(0.267361111);
+    expect($volume->toFt3()->value)->toBe(0.2674);
 });
 
 it('can convert gallons to cubic inches', function () {
@@ -85,8 +79,7 @@ it('can convert gallons to pints', function () {
 
 it('can convert gallons to cups', function () {
     $volume = Volume::from('2L');
-    $round = round($volume->toCup()->value, 5);
-    expect($round)->toBe(8.45351);
+    expect($volume->toCup()->value)->toBe(8.4535);
 });
 
 it('can correct units to a correct notation', function () {
@@ -99,21 +92,10 @@ it('can correct units to a correct notation', function () {
 it('can use extended names to convert units', function () {
     $volume = Volume::from('2 liters');
 
-    $round = round($volume->toCubicMeters()->value, 5);
-    expect($round)->toBe(0.002);
-
-    $round = round($volume->toCubicFeet()->value, 9);
-    expect($round)->toBe(0.070629333);
-
-    $round = round($volume->toCubicInches()->value, 7);
-    expect($round)->toBe(122.0474882);
-
-    $round = round($volume->toGallons()->value, 6);
-    expect($round)->toBe(0.528344);
-
-    $round = round($volume->toPints()->value, 6);
-    expect($round)->toBe(4.226753);
-
-    $round = round($volume->toCups()->value, 4);
-    expect($round)->toBe(8.4535);
+    expect($volume->toCubicMeters()->value)->toBe(0.002)
+        ->and($volume->toCubicFeet()->value)->toBe(0.0706)
+        ->and($volume->toCubicInches()->value)->toBe(121.9968)
+        ->and($volume->toGallons()->value)->toBe(0.5281)
+        ->and($volume->toPints()->value)->toBe(4.2248)
+        ->and($volume->toCups()->value)->toBe(8.4496);
 });

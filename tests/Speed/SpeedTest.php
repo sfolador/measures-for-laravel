@@ -16,24 +16,24 @@ it('can convert from m/s to km/h', function () {
 
 it('can convert from m/s to mi/h', function () {
     $speed = Speed::from('1m_s');
-    expect($speed->to('mi_h')->value)->toBe(2.23693629);
+    expect($speed->to('mi_h')->value)->toBe(2.2369);
 
     $speed = Speed::from('1 m/s');
-    expect($speed->to('mi/h')->value)->toBe(2.23693629);
+    expect($speed->to('mi/h')->value)->toBe(2.2369);
 
     $speed = Speed::from('1 meters per second');
-    expect($speed->to('miles per hour')->value)->toBe(2.23693629);
+    expect($speed->to('miles per hour')->value)->toBe(2.2369);
 });
 
 it('can convert from m/s to kn', function () {
     $speed = Speed::from('1m_s');
-    expect($speed->to('kn')->value)->toBe(1.94384449);
+    expect($speed->to('kn')->value)->toBe(1.9438);
 
     $speed = Speed::from('1 m/s');
-    expect($speed->to('kn')->value)->toBe(1.94384449);
+    expect($speed->to('kn')->value)->toBe(1.9438);
 
     $speed = Speed::from('1 meters per second');
-    expect($speed->to('kn')->value)->toBe(1.94384449);
+    expect($speed->to('kn')->value)->toBe(1.9438);
 });
 
 it('can convert from m/s to ft/s', function () {

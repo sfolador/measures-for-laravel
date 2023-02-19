@@ -7,7 +7,7 @@ it('can convert from square meters to square kilometers', function () {
     $area = Area::from('1m2');
     $area = $area->to('km2');
 
-    expect($area->value)->toBe(0.000001);
+    expect($area->realValue())->toBe(0.000001);
 });
 
 it('can convert from square meters to square centimeters', function () {
@@ -74,14 +74,13 @@ it('can convert from square inches to square yards', function () {
 
 it('can convert from square inches to square miles', function () {
     $area = Area::from('10000in2');
-    $rounded = round($area->to('mi2')->value, 8);
+    $rounded = round($area->to('mi2')->realValue(), 8);
     expect($rounded)->toBe(0.00000249);
 });
 
 it('can convert acres to square miles', function () {
     $area = Area::from('1ac');
-    $rounded = round($area->to('mi2')->value, 8);
-    expect($rounded)->toBe(0.0015625);
+    expect($area->to('mi2')->value)->toBe(0.0016);
 });
 
 it('can convert acres to hectares', function () {

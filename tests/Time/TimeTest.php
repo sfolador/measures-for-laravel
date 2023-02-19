@@ -5,13 +5,13 @@ use Sfolador\Measures\Unit\Time\Time;
 it('can convert nanoseconds to seconds', function () {
     $time = Time::from('1 ns');
 
-    expect($time->to('s')->value)->toBe(0.000000001);
+    expect($time->to('s')->realValue())->toBe(0.000000001);
 });
 
 it('can convert nanoseconds to milliseconds', function () {
     $time = Time::from('1 ns');
 
-    $rounded = round($time->to('ms')->value, 6);
+    $rounded = round($time->to('ms')->realValue(), 6);
 
     expect($rounded)->toBe(0.000001);
 });
@@ -49,7 +49,7 @@ it('can convert minutes to seconds', function () {
 it('can convert minutes to hours', function () {
     $time = Time::from('1 min');
 
-    $rounded = round($time->to('h')->value, 10);
+    $rounded = round($time->to('h')->realValue(), 10);
 
     expect($rounded)->toBe(0.0166666667);
 });
@@ -57,7 +57,7 @@ it('can convert minutes to hours', function () {
 it('can convert minutes to days', function () {
     $time = Time::from('1 min');
 
-    $rounded = round($time->to('d')->value, 10);
+    $rounded = round($time->to('d')->realValue(), 10);
 
     expect($rounded)->toBe(0.0006944444);
 });

@@ -15,7 +15,8 @@ class MeasuresServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('measures-for-laravel');
+            ->name('measures-for-laravel')
+            ->hasConfigFile('measures');
     }
 
     public function registeringPackage(): void
