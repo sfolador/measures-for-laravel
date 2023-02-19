@@ -4,7 +4,6 @@ namespace Sfolador\Measures\Unit\Energy;
 
 use Sfolador\Measures\Unit\Measure;
 
-
 /**
  * @method Energy toJoule() Convert to Joule
  * @method Energy toKilojoule() Convert to Kilojoule

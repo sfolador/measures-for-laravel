@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use Sfolador\Measures\Unit\Traits\ConversionFactor;
 use Sfolador\Measures\Unit\Units;
 
-enum UnitsOfEnergy:string implements Units
+enum UnitsOfEnergy: string implements Units
 {
     use ConversionFactor;
 
@@ -29,7 +29,6 @@ enum UnitsOfEnergy:string implements Units
     case KILOELECTRONVOLT = 'kev';
     case MEGAELECTRONVOLT = 'mev';
     case GIGAELECTRONVOLT = 'gev';
-
 
     public function conversionFactor(): float
     {
@@ -55,7 +54,7 @@ enum UnitsOfEnergy:string implements Units
 
     public function toStringNotation(): string
     {
-        return match($this){
+        return match ($this) {
             self::JOULE => 'J',
             self::KILOJOULE => 'KJ',
             self::MEGAJOULE => 'MJ',
@@ -72,16 +71,12 @@ enum UnitsOfEnergy:string implements Units
             self::KILOELECTRONVOLT => 'KeV',
             self::MEGAELECTRONVOLT => 'MeV',
             self::GIGAELECTRONVOLT => 'GeV',
-
-
         };
     }
 
     public static function extendedValues(string $unitName): Units
     {
-
-        return match($unitName){
-
+        return match ($unitName) {
             'joules','joule' => self::JOULE,
             'kilojoules','kilo joules','kilojoule' => self::KILOJOULE,
             'megajoules','mega joules','megajoule' => self::MEGAJOULE,
@@ -99,11 +94,6 @@ enum UnitsOfEnergy:string implements Units
             'megaelectronvolts','mega electronvolts','megaelectronvolt' => self::MEGAELECTRONVOLT,
             'gigaelectronvolts','giga electronvolts','gigaelectronvolt' => self::GIGAELECTRONVOLT,
             default => throw new InvalidArgumentException('Invalid unit name'),
-
-
         };
-
     }
-
-
 }
