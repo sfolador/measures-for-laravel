@@ -42,10 +42,10 @@ enum UnitsOfPower: string implements Units
     public static function extendedValues(string $unitName): Units
     {
         return match ($unitName) {
-            'watts' => self::WATT,
-            'kilowatts' => self::KILOWATT,
-            'megawatts' => self::MEGAWATT,
-            'gigawatts' => self::GIGAWATT,
+            'watts', 'watt' => self::WATT,
+            'kilowatts', 'kilowatt' => self::KILOWATT,
+            'megawatts', 'megawatt' => self::MEGAWATT,
+            'gigawatts', 'gigawatt' => self::GIGAWATT,
             'horsepower' => self::HORSEPOWER,
             default => throw new InvalidArgumentException('Invalid unit name'),
         };
