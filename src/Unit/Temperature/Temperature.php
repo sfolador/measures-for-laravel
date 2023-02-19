@@ -2,9 +2,7 @@
 
 namespace Sfolador\Measures\Unit\Temperature;
 
-use Illuminate\Support\Str;
 use Sfolador\Measures\Unit\Measure;
-use Sfolador\Measures\Unit\Units;
 
 /**
  * @method Temperature toCelsius()
@@ -17,5 +15,4 @@ use Sfolador\Measures\Unit\Units;
 class Temperature extends Measure
 {
     public static string $unitClass = UnitsOfTemperature::class;
-
 }

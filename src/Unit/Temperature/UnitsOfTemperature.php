@@ -58,7 +58,7 @@ enum UnitsOfTemperature: string implements Units
         return match ($unitName) {
             'celsius','ºC','ºc' => self::CELSIUS,
             'fahrenheit','ºF','ºf' => self::FAHRENHEIT,
-            'kelvin', 'ºK' ,'ºk'=> self::KELVIN,
+            'kelvin', 'ºK' ,'ºk' => self::KELVIN,
             default => throw new Exception('Invalid unit name'),
         };
     }
