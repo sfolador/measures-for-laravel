@@ -3,6 +3,7 @@
 namespace Sfolador\Measures\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use function Orchestra\Testbench\artisan;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Sfolador\Measures\MeasuresServiceProvider;
 
@@ -13,7 +14,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Sfolador\\Measures\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Sfolador\\Measures\\Tests\\database\\factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -24,13 +25,35 @@ class TestCase extends Orchestra
         ];
     }
 
+    public function defineEnvironment($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
+    }
+
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        config()->set('database.default', 'testbench');
+        config()->set('database.connections.testbench', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
+    }
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_measures-for-laravel_table.php.stub';
-        $migration->up();
-        */
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+        artisan($this, 'migrate', ['--database' => 'testbench']);
+
+        $this->beforeApplicationDestroyed(
+            fn () => artisan($this, 'migrate:rollback', ['--database' => 'testbench'])
+        );
     }
 }
