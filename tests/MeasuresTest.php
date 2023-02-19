@@ -3,6 +3,7 @@
 use Sfolador\Measures\Facades\Measures as MeasuresFacade;
 use Sfolador\Measures\Measures;
 use Sfolador\Measures\MeasuresInterface;
+use Sfolador\Measures\Unit\Angle\Angle;
 use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Energy\Energy;
 use Sfolador\Measures\Unit\Length\Length;
@@ -80,6 +81,12 @@ it('can convert a power', function () {
     expect($measures->power('1 W'))->toBeInstanceOf(Power::class);
 });
 
+it('can convert an angle', function () {
+    $measures = new Measures();
+
+    expect($measures->angle('1 rad'))->toBeInstanceOf(Angle::class);
+});
+
 it('can be instantiated with a facade', function () {
     $measures = MeasuresFacade::length('2.0m');
     expect($measures)->toBeInstanceOf(Length::class);
@@ -106,5 +113,6 @@ it('can detect automatically the measure', function () {
         ->and(MeasuresFacade::from('2.0ns'))->toBeInstanceOf(Time::class)
         ->and(MeasuresFacade::from('2.0Pa'))->toBeInstanceOf(Pressure::class)
         ->and(MeasuresFacade::from('2.0J'))->toBeInstanceOf(Energy::class)
-        ->and(MeasuresFacade::from('2.0W'))->toBeInstanceOf(Power::class);
+        ->and(MeasuresFacade::from('2.0W'))->toBeInstanceOf(Power::class)
+        ->and(MeasuresFacade::from('2.0deg'))->toBeInstanceOf(Angle::class);
 });

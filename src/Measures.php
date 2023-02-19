@@ -3,6 +3,7 @@
 namespace Sfolador\Measures;
 
 use Exception;
+use Sfolador\Measures\Unit\Angle\Angle;
 use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Energy\Energy;
 use Sfolador\Measures\Unit\Length\Length;
@@ -67,6 +68,11 @@ class Measures implements MeasuresInterface
         return Power::from($expression);
     }
 
+    public function angle(string $expression): Angle
+    {
+        return Angle::from($expression);
+    }
+
     public function from(string $expression): ?Measure
     {
         $measures = [
@@ -80,6 +86,7 @@ class Measures implements MeasuresInterface
             Pressure::class,
             Energy::class,
             Power::class,
+            Angle::class,
         ];
 
         $results = null;
