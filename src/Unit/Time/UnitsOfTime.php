@@ -3,10 +3,13 @@
 namespace Sfolador\Measures\Unit\Time;
 
 use Exception;
+use Sfolador\Measures\Unit\Traits\ConversionFactor;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfTime: string implements Units
 {
+    use ConversionFactor;
+
     case NANOSECOND = 'ns';
     case MICROSECOND = 'us';
     case MILLISECOND = 'ms';
@@ -15,38 +18,22 @@ enum UnitsOfTime: string implements Units
     case HOUR = 'h';
     case DAY = 'd';
     case WEEK = 'w';
-    case MONTH = 'm';
+    case MONTH = 'mo';
     case YEAR = 'y';
 
-    public function convertFromBase(float $value): float
+    public function conversionFactor(): float
     {
         return match ($this) {
-            self::NANOSECOND => $value * 1000000000,
-            self::MICROSECOND => $value * 1000000,
-            self::MILLISECOND => $value * 1000,
-            self::SECOND => $value,
-            self::MINUTE => $value / 60,
-            self::HOUR => $value / 3600,
-            self::DAY => $value / 86400,
-            self::WEEK => $value / 604800,
-            self::MONTH => $value / 2629746,
-            self::YEAR => $value / 31556952,
-        };
-    }
-
-    public function convertToBase(float $value): float
-    {
-        return match ($this) {
-            self::NANOSECOND => $value / 1000000000,
-            self::MICROSECOND => $value / 1000000,
-            self::MILLISECOND => $value / 1000,
-            self::SECOND => $value,
-            self::MINUTE => $value * 60,
-            self::HOUR => $value * 3600,
-            self::DAY => $value * 86400,
-            self::WEEK => $value * 604800,
-            self::MONTH => $value * 2629746,
-            self::YEAR => $value * 31556952,
+            self::NANOSECOND => 1 / 1000000000,
+            self::MICROSECOND => 1 / 1000000,
+            self::MILLISECOND => 1 / 1000,
+            self::SECOND => 1,
+            self::MINUTE => 60,
+            self::HOUR => 3600,
+            self::DAY => 86400,
+            self::WEEK => 604800,
+            self::MONTH => 2629746,
+            self::YEAR => 31556952,
         };
     }
 
@@ -60,7 +47,7 @@ enum UnitsOfTime: string implements Units
         return $destination->convertFromBase($this->convertToBase($value));
     }
 
-    public function correctNotation(): string
+    public function toStringNotation(): string
     {
         return match ($this) {
             self::NANOSECOND => 'ns',
@@ -71,7 +58,7 @@ enum UnitsOfTime: string implements Units
             self::HOUR => 'h',
             self::DAY => 'd',
             self::WEEK => 'w',
-            self::MONTH => 'm',
+            self::MONTH => 'mo',
             self::YEAR => 'y',
         };
     }

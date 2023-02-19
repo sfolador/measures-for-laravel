@@ -94,13 +94,11 @@ echo $length->toG(); // 2000.0 g
 - [x] Add area units
 - [x] Add speed units
 - [x] Add time units
-- [ ] Add pressure units
-- [ ] Add energy units
-- [ ] Add power units
-- [ ] Add force units
-- [ ] Add frequency units
-- [ ] Add data units
-- [ ] Add angle units
+- [x] Add pressure units
+- [x] Add energy units
+- [x] Add power units
+- [x] Add data units
+- [x] Add angle units
 - [ ] Add acceleration units
 
 ## Testing

@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Sfolador\Measures\Unit\Volume;
 
 use InvalidArgumentException;
+use Sfolador\Measures\Unit\Traits\ConversionFactor;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfVolume: string implements Units
 {
+    use ConversionFactor;
     case MILLILITER = 'ml';
     case LITER = 'l';
     case CUBIC_METER = 'm3';
@@ -19,31 +21,17 @@ enum UnitsOfVolume: string implements Units
     case PINT = 'pt';
     case CUP = 'cup';
 
-    public function convertToBase(float $value): float
+    public function conversionFactor(): float
     {
         return match ($this) {
-            self::MILLILITER => $value / 1000,
-            self::LITER => $value,
-            self::CUBIC_METER => $value * 1000,
-            self::CUBIC_INCH => $value / 61.0237441,
-            self::CUBIC_FOOT => $value * 28.316846592,
-            self::GALLON => $value / 0.264172052,
-            self::PINT => $value / 2.11337642,
-            self::CUP => $value / 4.22675284,
-        };
-    }
-
-    public function convertFromBase(float $value): float
-    {
-        return match ($this) {
-            self::MILLILITER => $value * 1000,
-            self::LITER => $value,
-            self::CUBIC_METER => $value / 1000,
-            self::CUBIC_INCH => $value * 61.0237441,
-            self::CUBIC_FOOT => $value / 28.316846592,
-            self::GALLON => $value * 0.264172052,
-            self::PINT => $value * 2.11337642,
-            self::CUP => $value * 4.22675284,
+            self::MILLILITER => 1 / 1000,
+            self::LITER => 1,
+            self::CUBIC_METER => 1000,
+            self::CUBIC_INCH => 1 / 61.0237441,
+            self::CUBIC_FOOT => 28.316846592,
+            self::GALLON => 1 / 0.264172052,
+            self::PINT => 1 / 2.11337642,
+            self::CUP => 1 / 4.22675284
         };
     }
 
@@ -60,7 +48,7 @@ enum UnitsOfVolume: string implements Units
         return $this->convert($value, $destination);
     }
 
-    public function correctNotation(): string
+    public function toStringNotation(): string
     {
         return match ($this) {
             self::MILLILITER => 'ml',

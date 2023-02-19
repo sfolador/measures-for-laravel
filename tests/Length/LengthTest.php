@@ -37,9 +37,9 @@ it('can correct units to a correct notation', function () {
     $cases = UnitsOfLength::cases();
     foreach ($cases as $case) {
         if ($case === UnitsOfLength::KILOMETER) {
-            expect($case->correctNotation())->toBe('Km');
+            expect($case->toStringNotation())->toBe('Km');
         } else {
-            expect($case->correctNotation())->toBe($case->value);
+            expect($case->toStringNotation())->toBe($case->value);
         }
     }
 });
@@ -62,33 +62,28 @@ it('can convert from m to km', function () {
 it('can convert from m to miles', function () {
     $length = Length::from('2m');
 
-    $rounded = round($length->toMi()->value, 9);
-
-    expect($rounded)->toBe(0.001242742);
+    expect($length->toMi()->value)->toBe(0.0012);
 });
 
 it('can convert from m to nautical miles', function () {
     $length = Length::from('2m');
-    $rounded = round($length->toNmi()->value, 9);
-    expect($rounded)->toBe(0.001079914);
+
+    expect($length->toNmi()->value)->toBe(0.0011);
 });
 
 it('can convert from m to feet', function () {
     $length = Length::from('2m');
-    $rounded = round($length->toFt()->value, 8);
-    expect($rounded)->toBe(6.56167979);
+    expect($length->toFt()->value)->toBe(6.5617);
 });
 
 it('can convert from m to inches', function () {
     $length = Length::from('2m');
-    $rounded = round($length->toIn()->value, 8);
-    expect($rounded)->toBe(78.74015748);
+    expect($length->toIn()->value)->toBe(78.7402);
 });
 
 it('can convert from m to yards', function () {
     $length = Length::from('2m');
-    $rounded = round($length->toYd()->value, 8);
-    expect($rounded)->toBe(2.1872266);
+    expect($length->toYd()->value)->toBe(2.1872);
 });
 
 it('can convert from miles to m', function () {
@@ -103,15 +98,13 @@ it('can convert from miles to cm', function () {
 
 it('can convert from miles to km', function () {
     $length = Length::from('2mi');
-    expect($length->toKM()->value)->toBe(3.218688);
+    expect($length->toKM()->value)->toBe(3.2187);
 });
 
 it('can convert from miles to nautical miles', function () {
     $length = Length::from('2mi');
 
-    $rounded = round($length->toNmi()->value, 9);
-
-    expect($rounded)->toBe(1.737952484);
+    expect($length->toNmi()->value)->toBe(1.738);
 });
 
 it('can convert from miles to feet', function () {

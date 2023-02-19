@@ -14,8 +14,11 @@ class Measure
 
     public static string $unitClass = Units::class;
 
+    private float $realValue;
+
     final public function __construct(public float $value, public Units $unit)
     {
+        $this->realValue = $value;
     }
 
     public static function detectUnit(string $expression): ?Units
@@ -54,10 +57,17 @@ class Measure
 
         $convertedValue = $this->unit->to($this->value, $destination);
 
-        $this->value = $convertedValue;
+        $this->realValue = $convertedValue;
+        /* @phpstan-ignore-next-line */
+        $this->value = round($convertedValue, config('measures.default_precision', 4));
         $this->unit = $destination;
 
         return $this;
+    }
+
+    public function realValue(): float
+    {
+        return $this->realValue;
     }
 
     public static function extractValue(string $expression): ?string
@@ -87,7 +97,7 @@ class Measure
 
     public function __toString(): string
     {
-        return $this->value.' '.$this->unit->correctNotation();
+        return $this->value.' '.$this->unit->toStringNotation();
     }
 
     public function unitClass(): string
