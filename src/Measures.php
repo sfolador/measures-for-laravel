@@ -4,6 +4,7 @@ namespace Sfolador\Measures;
 
 use Exception;
 use Sfolador\Measures\Unit\Area\Area;
+use Sfolador\Measures\Unit\Energy\Energy;
 use Sfolador\Measures\Unit\Length\Length;
 use Sfolador\Measures\Unit\Measure;
 use Sfolador\Measures\Unit\Pressure\Pressure;
@@ -55,6 +56,11 @@ class Measures implements MeasuresInterface
         return Pressure::from($expression);
     }
 
+    public function energy(string $expression): Energy
+    {
+        return Energy::from($expression);
+    }
+
     public function from(string $expression): ?Measure
     {
         $measures = [
@@ -66,14 +72,19 @@ class Measures implements MeasuresInterface
             Speed::class,
             Time::class,
             Pressure::class,
+            Energy::class
         ];
 
         $results = null;
         foreach ($measures as $measure) {
             try {
+                /**
+                 * @var Measure $results
+                 * @var Measure $measure
+                 */
                 $results = $measure::from($expression);
                 //add a break here to stop after the first match
-            } catch (Exception $e) {
+            } catch (Exception) {
                 continue;
             }
         }
