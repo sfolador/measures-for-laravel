@@ -2,6 +2,10 @@
 
 All notable changes to `measures-for-laravel` will be documented in this file.
 
+## Eloquent cast - 2023-02-19
+
+It's now possible to cast an Eloquent attribute to a Measure
+
 ## Added remaining units - 2023-02-19
 
 Power, Energy, Pressure, Data, Angle
