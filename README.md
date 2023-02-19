@@ -73,6 +73,38 @@ $measure = Measures::from("2.0Kg"); // $measure is an instance of Weight
 echo $measures->toG(); // 2000 g
 ```
 
+## Eloquent cast
+
+It's possible to cast a model attribute to a measure:
+
+```php
+
+use \Sfolador\Measures\Unit\Weight\Weight;
+use Sfolador\Measures\Cast\Measure;
+
+class Product extends Model
+{
+    protected $casts = [
+        'weight' => Measure::class,
+        'length'   => Measure::class,
+    ];
+}
+
+$product = Product::first();
+echo $product->weight->toKg(); // 2 Kg
+echo $product->length->toCm(); // 200 cm
+
+
+$product->weight = Weight::from("3.0Kg");
+$product->length = Length::from("1.0m");
+
+$product->save();
+echo $product->weight->toKg(); // 3 Kg
+echo $product->length->toCm(); // 100 cm
+
+```
+
+
 ## Available units
 
 ### Length

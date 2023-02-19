@@ -1,5 +1,8 @@
 <?php
 
+
+declare(strict_types=1);
+
 namespace Sfolador\Measures;
 
 use Spatie\LaravelPackageTools\Package;
