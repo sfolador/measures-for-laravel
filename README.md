@@ -20,7 +20,7 @@ composer require sfolador/measures-for-laravel
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="measures"
+php artisan vendor:publish --tag="measures-for-laravel-config"
 ```
 
 ## Usage
@@ -47,6 +47,30 @@ echo $measures->toG(); // 2000.0 g
 $length = Weight::from("2.0Kg");
 echo $length->toG(); // 2000.0 g
 
+```
+
+It's possible to use also extended fluent methods: 
+
+```php
+
+$measure = Length::from("2.0m");
+echo $measures->toCentimeters(); // 200 cm
+
+//you can chain the methods: 
+
+echo  Length::from("2.0m")->toCentimeters(); // 200 cm
+```
+
+If you do not know which kind of measure you are dealing with, you can use the `Measures` class to 
+automatically detect the type of measure:
+
+```php
+
+$measure = Measures::from("2.0m"); // $measure is an instance of Length
+echo $measures->toCm(); // 200 cm
+
+$measure = Measures::from("2.0Kg"); // $measure is an instance of Weight
+echo $measures->toG(); // 2000 g
 ```
 
 ## Available units
@@ -92,18 +116,101 @@ echo $length->toG(); // 2000.0 g
 - Fahrenheit
 - Kelvin
 
-## Todos
+### Area
 
-- [x] Add volume units
-- [x] Add temperature units
-- [x] Add area units
-- [x] Add speed units
-- [x] Add time units
-- [x] Add pressure units
-- [x] Add energy units
-- [x] Add power units
-- [x] Add data units
-- [x] Add angle units
+- Square meter
+- Square kilometer
+- Square centimeter
+- Square millimeter
+- Square inch
+- Square foot
+- Square yard
+- Square mile
+- Acre
+- Hectare
+
+### Data
+
+- Bit
+- Byte
+- Kilobit
+- Kilobyte
+- Megabit
+- Megabyte
+- Gigabit
+- Gigabyte
+- Terabit
+- Terabyte
+- Petabit
+- Petabyte
+- kibibit
+- kibibyte
+- mebibit
+- mebibyte
+- gibibit
+- gibibyte
+- tebibit
+- tebibyte
+- pebibit
+- pebibyte
+
+### Speed
+
+- Meter per second
+- Kilometer per hour
+- Mile per hour
+- Knot
+- Foot per second
+- Mach
+
+### Time
+
+- Nanosecond
+- Microsecond
+- Millisecond
+- Second
+- Minute
+- Hour
+- Day
+- Week
+- Month
+- Year
+
+### Pressure
+
+- Pascal
+- Kilopascal
+- Bar
+- Millibar
+- Atmosphere
+- Torr
+- Pound per square inch
+- Millimeter of mercury
+
+### Energy
+
+- Joule
+- Kilojoule
+- Megajoule
+- Gigajoule
+- Watt hour
+- Kilowatt hour
+- Megawatt hour
+- Gigawatt hour
+- Calorie
+- Kilocalorie
+- Megacalorie
+- Gigacalorie
+- Electronvolt
+- Kiloelectronvolt
+- Megaelectronvolt
+- Gigaelectronvolt
+
+### Angle
+
+- Degree
+- Radian
+
 
 ## Testing
 
