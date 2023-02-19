@@ -2,6 +2,10 @@
 
 All notable changes to `measures-for-laravel` will be documented in this file.
 
+## Area, Speed and Time units - 2023-02-19
+
+added area, speed and time units
+
 ## Refactor - 2023-02-18
 
 Added extended unit names to conversion method
