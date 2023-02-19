@@ -2,6 +2,7 @@
 
 namespace Sfolador\Measures;
 
+use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Length\Length;
 use Sfolador\Measures\Unit\Temperature\Temperature;
 use Sfolador\Measures\Unit\Volume\Volume;
@@ -27,5 +28,10 @@ class Measures implements MeasuresInterface
     public function temperature(string $expression): Temperature
     {
         return Temperature::from($expression);
+    }
+
+    public function area(string $expression): Area
+    {
+        return Area::from($expression);
     }
 }

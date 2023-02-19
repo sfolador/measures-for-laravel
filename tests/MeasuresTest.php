@@ -3,6 +3,7 @@
 use Sfolador\Measures\Facades\Measures as MeasuresFacade;
 use Sfolador\Measures\Measures;
 use Sfolador\Measures\MeasuresInterface;
+use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Length\Length;
 use Sfolador\Measures\Unit\Temperature\Temperature;
 use Sfolador\Measures\Unit\Volume\Volume;
@@ -36,6 +37,12 @@ it('can convert a temperature', function () {
     $measures = new Measures();
 
     expect($measures->temperature('200ºC'))->toBeInstanceOf(Temperature::class);
+});
+
+it('can convert an area', function () {
+    $measures = new Measures();
+
+    expect($measures->area('200km2'))->toBeInstanceOf(Area::class);
 });
 
 it('can be instantiated with a facade', function () {

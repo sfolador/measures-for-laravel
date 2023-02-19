@@ -62,13 +62,18 @@ class Measure
 
     public static function extractValue(string $expression): ?string
     {
-        return preg_replace('/[^\d+.]/', '', $expression);
+        $results = Str::of($expression)->trim()->explode(' ')->first();
+        /* @phpstan-ignore-next-line */
+        if (Str::of($results)->length() === Str::of($expression)->length()) {
+            return Str::of($expression)->match('/[\d.+]+/')->value();
+        }
+        /* @phpstan-ignore-next-line */
+        return $results;
     }
 
     public static function getValueAndUnit(string $expression): array
     {
         $value = static::extractValue($expression);
-
         $expression = Str::remove((string) $value, $expression);
 
         $unit = static::detectUnit($expression);

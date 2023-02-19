@@ -91,7 +91,7 @@ echo $length->toG(); // 2000.0 g
 
 - [x] Add volume units
 - [x] Add temperature units
-- [ ] Add area units
+- [x] Add area units
 - [ ] Add speed units
 - [ ] Add time units
 - [ ] Add pressure units
