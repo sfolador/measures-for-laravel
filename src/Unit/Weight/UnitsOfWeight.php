@@ -86,8 +86,8 @@ enum UnitsOfWeight: string implements Units
             'ounces' => self::OUNCE,
             'pounds' => self::POUND,
             'stones' => self::STONE,
-            'shorttons' => self::SHORT_TON,
-            'longtons' => self::LONG_TON,
+            'shorttons','short tons' => self::SHORT_TON,
+            'longtons','long tons' => self::LONG_TON,
             default => throw new Exception('Invalid unit name'),
         };
     }

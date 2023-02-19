@@ -63,11 +63,11 @@ enum UnitsOfSpeed: string implements Units
     public static function extendedValues(string $unitName): Units
     {
         return match ($unitName) {
-            'meters_per_second', 'meters per second', 'm/s' => self::METER_PER_SECOND,
-            'kilometers_per_hour', 'kilometers per hour','km/h' => self::KILOMETER_PER_HOUR,
-            'miles_per_hour', 'miles per hour','mi/h' => self::MILE_PER_HOUR,
+            'meters_per_second', 'meters per second','meterspersecond', 'm/s' => self::METER_PER_SECOND,
+            'kilometers_per_hour', 'kilometers per hour','km/h','kilometersperhour' => self::KILOMETER_PER_HOUR,
+            'miles_per_hour', 'miles per hour','mi/h', 'milesperhour' => self::MILE_PER_HOUR,
             'knots' => self::KNOT,
-            'feet_per_second', 'feet per second','ft/s' => self::FOOT_PER_SECOND,
+            'feet_per_second', 'feet per second','feetpersecond','ft/s' => self::FOOT_PER_SECOND,
             'mach' => self::MACH,
             default => throw new Exception('Invalid unit name'),
         };

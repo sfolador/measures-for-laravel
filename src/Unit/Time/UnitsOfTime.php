@@ -15,7 +15,7 @@ enum UnitsOfTime: string implements Units
     case HOUR = 'h';
     case DAY = 'd';
     case WEEK = 'w';
-    case MONTH = 'm';
+    case MONTH = 'mo';
     case YEAR = 'y';
 
     public function convertFromBase(float $value): float
@@ -71,7 +71,7 @@ enum UnitsOfTime: string implements Units
             self::HOUR => 'h',
             self::DAY => 'd',
             self::WEEK => 'w',
-            self::MONTH => 'm',
+            self::MONTH => 'mo',
             self::YEAR => 'y',
         };
     }

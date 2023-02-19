@@ -2,8 +2,10 @@
 
 namespace Sfolador\Measures;
 
+use Exception;
 use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Length\Length;
+use Sfolador\Measures\Unit\Measure;
 use Sfolador\Measures\Unit\Speed\Speed;
 use Sfolador\Measures\Unit\Temperature\Temperature;
 use Sfolador\Measures\Unit\Time\Time;
@@ -45,5 +47,29 @@ class Measures implements MeasuresInterface
     public function time(string $expression): Time
     {
         return Time::from($expression);
+    }
+
+    public function from(string $expression): ?Measure
+    {
+        $measures = [
+            Length::class,
+            Weight::class,
+            Volume::class,
+            Temperature::class,
+            Area::class,
+            Speed::class,
+            Time::class,
+        ];
+
+        $results = null;
+        foreach ($measures as $measure) {
+            try {
+                $results = $measure::from($expression);
+            }catch (Exception $e) {
+                continue;
+            }
+        }
+
+        return $results;
     }
 }
