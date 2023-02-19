@@ -2,8 +2,11 @@
 
 namespace Sfolador\Measures;
 
+use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Length\Length;
+use Sfolador\Measures\Unit\Speed\Speed;
 use Sfolador\Measures\Unit\Temperature\Temperature;
+use Sfolador\Measures\Unit\Time\Time;
 use Sfolador\Measures\Unit\Volume\Volume;
 use Sfolador\Measures\Unit\Weight\Weight;
 
@@ -27,5 +30,20 @@ class Measures implements MeasuresInterface
     public function temperature(string $expression): Temperature
     {
         return Temperature::from($expression);
+    }
+
+    public function area(string $expression): Area
+    {
+        return Area::from($expression);
+    }
+
+    public function speed(string $expression): Speed
+    {
+        return Speed::from($expression);
+    }
+
+    public function time(string $expression): Time
+    {
+        return Time::from($expression);
     }
 }

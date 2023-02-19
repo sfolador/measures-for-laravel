@@ -3,8 +3,11 @@
 use Sfolador\Measures\Facades\Measures as MeasuresFacade;
 use Sfolador\Measures\Measures;
 use Sfolador\Measures\MeasuresInterface;
+use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Length\Length;
+use Sfolador\Measures\Unit\Speed\Speed;
 use Sfolador\Measures\Unit\Temperature\Temperature;
+use Sfolador\Measures\Unit\Time\Time;
 use Sfolador\Measures\Unit\Volume\Volume;
 use Sfolador\Measures\Unit\Weight\Weight;
 
@@ -36,6 +39,24 @@ it('can convert a temperature', function () {
     $measures = new Measures();
 
     expect($measures->temperature('200ºC'))->toBeInstanceOf(Temperature::class);
+});
+
+it('can convert an area', function () {
+    $measures = new Measures();
+
+    expect($measures->area('200km2'))->toBeInstanceOf(Area::class);
+});
+
+it('can convert a speed', function () {
+    $measures = new Measures();
+
+    expect($measures->speed('100 Km/h'))->toBeInstanceOf(Speed::class);
+});
+
+it('can convert a time', function () {
+    $measures = new Measures();
+
+    expect($measures->time('1 ns'))->toBeInstanceOf(Time::class);
 });
 
 it('can be instantiated with a facade', function () {
