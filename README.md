@@ -17,6 +17,11 @@ You can install the package via composer:
 composer require sfolador/measures-for-laravel
 ```
 
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --tag="measures"
+```
 
 ## Usage
 
@@ -99,7 +104,6 @@ echo $length->toG(); // 2000.0 g
 - [x] Add power units
 - [x] Add data units
 - [x] Add angle units
-- [ ] Add acceleration units
 
 ## Testing
 
