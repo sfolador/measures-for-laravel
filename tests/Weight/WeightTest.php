@@ -42,9 +42,9 @@ it('can correct units to a correct notation', function () {
     $cases = UnitsOfWeight::cases();
     foreach ($cases as $case) {
         if ($case === UnitsOfWeight::KILOGRAM) {
-            expect($case->correctNotation())->toBe('Kg');
+            expect($case->toStringNotation())->toBe('Kg');
         } else {
-            expect($case->correctNotation())->toBe($case->value);
+            expect($case->toStringNotation())->toBe($case->value);
         }
     }
 });

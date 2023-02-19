@@ -31,7 +31,7 @@ enum UnitsOfTemperature: string implements Units
         };
     }
 
-    public function correctNotation(): string
+    public function toStringNotation(): string
     {
         return match ($this) {
             self::CELSIUS, => 'ºC',

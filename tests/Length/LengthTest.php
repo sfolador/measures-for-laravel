@@ -37,9 +37,9 @@ it('can correct units to a correct notation', function () {
     $cases = UnitsOfLength::cases();
     foreach ($cases as $case) {
         if ($case === UnitsOfLength::KILOMETER) {
-            expect($case->correctNotation())->toBe('Km');
+            expect($case->toStringNotation())->toBe('Km');
         } else {
-            expect($case->correctNotation())->toBe($case->value);
+            expect($case->toStringNotation())->toBe($case->value);
         }
     }
 });

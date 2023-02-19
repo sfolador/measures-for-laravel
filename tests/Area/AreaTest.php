@@ -113,6 +113,6 @@ it('can correct units to a correct notation', function () {
     foreach ($cases as $case) {
         $value = $case->value;
         $valueWithExponent = Str::of($value)->replace('2', '²')->value();
-        expect($case->correctNotation())->toBe($valueWithExponent);
+        expect($case->toStringNotation())->toBe($valueWithExponent);
     }
 });

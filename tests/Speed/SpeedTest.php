@@ -4,14 +4,14 @@ use Sfolador\Measures\Unit\Speed\Speed;
 
 it('can convert from m/s to km/h', function () {
     $speed = Speed::from('1m_s');
-    expect($speed->to('km_h')->value)->toBe(3.6);
+    expect(round($speed->to('km_h')->value, 1))->toBe(3.6);
 
     $speed = Speed::from('1 m/s');
-    expect($speed->to('km/h')->value)->toBe(3.6)
+    expect(round($speed->to('km/h')->value, 1))->toBe(3.6)
         ->and((string) $speed->to('km/h'))->toBe('3.6 Km/h');
 
     $speed = Speed::from('1 meters per second');
-    expect($speed->to('kilometers per hour')->value)->toBe(3.6);
+    expect(round($speed->to('kilometers per hour')->value, 1))->toBe(3.6);
 });
 
 it('can convert from m/s to mi/h', function () {

@@ -3,10 +3,12 @@
 namespace Sfolador\Measures\Unit\Weight;
 
 use Exception;
+use Sfolador\Measures\Unit\Traits\ConversionFactor;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfWeight: string implements Units
 {
+    use ConversionFactor;
     case MILLIGRAM = 'mg';
     case GRAM = 'g';
     case KILOGRAM = 'kg';
@@ -17,33 +19,18 @@ enum UnitsOfWeight: string implements Units
     case SHORT_TON = 'ton';
     case LONG_TON = 'lton';
 
-    public function convertToBase(float $value): float
+    public function conversionFactor(): float
     {
         return match ($this) {
-            self::MILLIGRAM => $value / 1000,
-            self::GRAM => $value,
-            self::KILOGRAM => $value * 1000,
-            self::TON => $value * 1000000,
-            self::OUNCE => $value * 28.349523125,
-            self::POUND => $value * 453.59237,
-            self::STONE => $value * 6350.29318,
-            self::SHORT_TON => $value * 907184.9,
-            self::LONG_TON => $value * 1016046.9088,
-        };
-    }
-
-    public function convertFromBase(float $value): float
-    {
-        return match ($this) {
-            self::MILLIGRAM => $value * 1000,
-            self::GRAM => $value,
-            self::KILOGRAM => $value / 1000,
-            self::TON => $value / 1000000,
-            self::OUNCE => $value / 28.349523125,
-            self::POUND => $value / 453.59237,
-            self::STONE => $value / 6350.29318,
-            self::SHORT_TON => $value / 907184.9 ,
-            self::LONG_TON => $value / 1016046.9088,
+            self::MILLIGRAM => 1 / 1000,
+            self::GRAM => 1,
+            self::KILOGRAM => 1000,
+            self::TON => 1000000,
+            self::OUNCE => 28.349523125,
+            self::POUND => 453.59237,
+            self::STONE => 6350.29318,
+            self::SHORT_TON => 907184.9,
+            self::LONG_TON => 1016046.9088,
         };
     }
 
@@ -61,7 +48,7 @@ enum UnitsOfWeight: string implements Units
         return $value;
     }
 
-    public function correctNotation(): string
+    public function toStringNotation(): string
     {
         return match ($this) {
             self::MILLIGRAM => 'mg',

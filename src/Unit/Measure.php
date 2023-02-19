@@ -87,7 +87,7 @@ class Measure
 
     public function __toString(): string
     {
-        return $this->value.' '.$this->unit->correctNotation();
+        return $this->value.' '.$this->unit->toStringNotation();
     }
 
     public function unitClass(): string

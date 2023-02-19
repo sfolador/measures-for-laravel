@@ -92,7 +92,7 @@ it('can convert gallons to cups', function () {
 it('can correct units to a correct notation', function () {
     $cases = UnitsOfVolume::cases();
     foreach ($cases as $case) {
-        expect($case->correctNotation())->toBe($case->value);
+        expect($case->toStringNotation())->toBe($case->value);
     }
 });
 

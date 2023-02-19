@@ -119,13 +119,13 @@ it('can correct units to a correct notation', function () {
     $cases = UnitsOfTemperature::cases();
     foreach ($cases as $case) {
         if ($case === UnitsOfTemperature::CELSIUS) {
-            expect($case->correctNotation())->toBe('ºC');
+            expect($case->toStringNotation())->toBe('ºC');
         } elseif ($case === UnitsOfTemperature::FAHRENHEIT) {
-            expect($case->correctNotation())->toBe('ºF');
+            expect($case->toStringNotation())->toBe('ºF');
         } elseif ($case === UnitsOfTemperature::KELVIN || $case === UnitsOfTemperature::KELVIN_DEG) {
-            expect($case->correctNotation())->toBe('ºK');
+            expect($case->toStringNotation())->toBe('ºK');
         } else {
-            expect($case->correctNotation())->toBe($case->value);
+            expect($case->toStringNotation())->toBe($case->value);
         }
     }
 });

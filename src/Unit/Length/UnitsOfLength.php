@@ -3,10 +3,13 @@
 namespace Sfolador\Measures\Unit\Length;
 
 use InvalidArgumentException;
+use Sfolador\Measures\Unit\Traits\ConversionFactor;
 use Sfolador\Measures\Unit\Units;
 
 enum UnitsOfLength: string implements Units
 {
+    use ConversionFactor;
+
     case METER = 'm';
     case CENTIMETER = 'cm';
     case MILLIMETER = 'mm';
@@ -25,43 +28,25 @@ enum UnitsOfLength: string implements Units
 
     public function convert(float $value, Units $destination): float
     {
-        $valueInMeters = $this->convertToBase($value);
-        $value = $destination->convertFromBase($valueInMeters);
-
-        return $value;
+        return $destination->convertFromBase($this->convertToBase($value));
     }
 
-    public function convertToBase(float $value): float
+    public function conversionFactor(): float
     {
         return match ($this) {
-            self::METER => $value,
-            self::CENTIMETER => $value / 100,
-            self::MILLIMETER => $value / 1000,
-            self::KILOMETER => $value * 1000,
-            self::INCH => $value * 0.0254,
-            self::FOOT => $value * 0.3048,
-            self::YARD => $value * 0.9144,
-            self::MILE => $value * 1609.344,
-            self::NAUTICAL_MILE => $value * 1852,
+            self::METER => 1,
+            self::CENTIMETER => 1 / 100,
+            self::MILLIMETER => 1 / 1000,
+            self::KILOMETER => 1000,
+            self::INCH => 0.0254,
+            self::FOOT => 0.3048,
+            self::YARD => 0.9144,
+            self::MILE => 1609.344,
+            self::NAUTICAL_MILE => 1852,
         };
     }
 
-    public function convertFromBase(float $value): float
-    {
-        return match ($this) {
-            self::METER => $value,
-            self::CENTIMETER => $value * 100,
-            self::MILLIMETER => $value * 1000,
-            self::KILOMETER => $value / 1000,
-            self::INCH => $value / 0.0254,
-            self::FOOT => $value / 0.3048,
-            self::YARD => $value / 0.9144,
-            self::MILE => $value / 1609.344,
-            self::NAUTICAL_MILE => $value / 1852,
-        };
-    }
-
-    public function correctNotation(): string
+    public function toStringNotation(): string
     {
         return match ($this) {
             self::METER => 'm',

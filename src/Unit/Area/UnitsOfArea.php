@@ -63,7 +63,7 @@ enum UnitsOfArea: string implements Units
         return $destination->convertFromBase($this->convertToBase($value));
     }
 
-    public function correctNotation(): string
+    public function toStringNotation(): string
     {
         return match ($this) {
             self::SQUARE_METER => 'm²',
