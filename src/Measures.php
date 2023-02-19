@@ -6,6 +6,7 @@ use Exception;
 use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Length\Length;
 use Sfolador\Measures\Unit\Measure;
+use Sfolador\Measures\Unit\Pressure\Pressure;
 use Sfolador\Measures\Unit\Speed\Speed;
 use Sfolador\Measures\Unit\Temperature\Temperature;
 use Sfolador\Measures\Unit\Time\Time;
@@ -49,6 +50,11 @@ class Measures implements MeasuresInterface
         return Time::from($expression);
     }
 
+    public function pressure(string $expression): Pressure
+    {
+        return Pressure::from($expression);
+    }
+
     public function from(string $expression): ?Measure
     {
         $measures = [
@@ -59,12 +65,14 @@ class Measures implements MeasuresInterface
             Area::class,
             Speed::class,
             Time::class,
+            Pressure::class
         ];
 
         $results = null;
         foreach ($measures as $measure) {
             try {
                 $results = $measure::from($expression);
+                //add a break here to stop after the first match
             } catch (Exception $e) {
                 continue;
             }

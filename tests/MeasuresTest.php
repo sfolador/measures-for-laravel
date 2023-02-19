@@ -5,6 +5,7 @@ use Sfolador\Measures\Measures;
 use Sfolador\Measures\MeasuresInterface;
 use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Length\Length;
+use Sfolador\Measures\Unit\Pressure\Pressure;
 use Sfolador\Measures\Unit\Speed\Speed;
 use Sfolador\Measures\Unit\Temperature\Temperature;
 use Sfolador\Measures\Unit\Time\Time;
@@ -59,6 +60,12 @@ it('can convert a time', function () {
     expect($measures->time('1 ns'))->toBeInstanceOf(Time::class);
 });
 
+it('can convert a pressure', function () {
+    $measures = new Measures();
+
+    expect($measures->pressure('1 pa'))->toBeInstanceOf(Pressure::class);
+});
+
 it('can be instantiated with a facade', function () {
     $measures = MeasuresFacade::length('2.0m');
     expect($measures)->toBeInstanceOf(Length::class);
@@ -76,11 +83,12 @@ it('can be instantiated with a facade through the app', function () {
 });
 
 it('can detect automatically the measure', function () {
-    expect(MeasuresFacade::from('2.0m'))->toBeInstanceOf(Length::class);
-    expect(MeasuresFacade::from('2.0kg'))->toBeInstanceOf(Weight::class);
-    expect(MeasuresFacade::from('2.0l'))->toBeInstanceOf(Volume::class);
-    expect(MeasuresFacade::from('2.0ºC'))->toBeInstanceOf(Temperature::class);
-    expect(MeasuresFacade::from('2.0km2'))->toBeInstanceOf(Area::class);
-    expect(MeasuresFacade::from('2.0km/h'))->toBeInstanceOf(Speed::class);
-    expect(MeasuresFacade::from('2.0ns'))->toBeInstanceOf(Time::class);
+    expect(MeasuresFacade::from('2.0m'))->toBeInstanceOf(Length::class)
+        ->and(MeasuresFacade::from('2.0kg'))->toBeInstanceOf(Weight::class)
+        ->and(MeasuresFacade::from('2.0l'))->toBeInstanceOf(Volume::class)
+        ->and(MeasuresFacade::from('2.0ºC'))->toBeInstanceOf(Temperature::class)
+        ->and(MeasuresFacade::from('2.0km2'))->toBeInstanceOf(Area::class)
+        ->and(MeasuresFacade::from('2.0km/h'))->toBeInstanceOf(Speed::class)
+        ->and(MeasuresFacade::from('2.0ns'))->toBeInstanceOf(Time::class)
+        ->and(MeasuresFacade::from('2.0Pa'))->toBeInstanceOf(Pressure::class);
 });

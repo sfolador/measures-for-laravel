@@ -21,15 +21,7 @@ enum UnitsOfLength: string implements Units
     case MILE = 'mi';
     case NAUTICAL_MILE = 'nmi';
 
-    public function to(float $value, Units $destination): float
-    {
-        return $this->convert($value, $destination);
-    }
 
-    public function convert(float $value, Units $destination): float
-    {
-        return $destination->convertFromBase($this->convertToBase($value));
-    }
 
     public function conversionFactor(): float
     {
