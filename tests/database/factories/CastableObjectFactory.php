@@ -3,7 +3,6 @@
 namespace Sfolador\Measures\Tests\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Sfolador\Locked\Tests\TestClasses\TestModel;
 use Sfolador\Measures\Tests\TestModels\CastableObject;
 
 class CastableObjectFactory extends Factory
@@ -15,6 +14,4 @@ class CastableObjectFactory extends Factory
         return [
         ];
     }
-
-
 }

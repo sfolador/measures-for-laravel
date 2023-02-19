@@ -11,10 +11,6 @@ use Sfolador\Measures\Facades\Measures;
 class Measure implements CastsAttributes
 {
     /**
-     * @param $model
-     * @param string $key
-     * @param $value
-     * @param array $attributes
      * @return \Sfolador\Measures\Unit\Measure|null
      */
     public function get($model, string $key, $value, array $attributes)
@@ -22,6 +18,7 @@ class Measure implements CastsAttributes
         if (is_null($value)) {
             return null;
         }
+
         return Measures::from($value);
     }
 
@@ -33,5 +30,4 @@ class Measure implements CastsAttributes
 
         return (string) $value;
     }
-
 }

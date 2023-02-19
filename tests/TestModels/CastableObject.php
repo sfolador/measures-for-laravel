@@ -9,6 +9,7 @@ use Sfolador\Measures\Cast\Measure;
 class CastableObject extends Model
 {
     use hasFactory;
+
     protected $table = 'castables';
 
     protected $casts = [

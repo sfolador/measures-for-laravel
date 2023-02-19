@@ -3,9 +3,9 @@
 namespace Sfolador\Measures\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use function Orchestra\Testbench\artisan;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Sfolador\Measures\MeasuresServiceProvider;
-use function Orchestra\Testbench\artisan;
 
 class TestCase extends Orchestra
 {
@@ -56,5 +56,4 @@ class TestCase extends Orchestra
             fn () => artisan($this, 'migrate:rollback', ['--database' => 'testbench'])
         );
     }
-
 }
