@@ -4,7 +4,6 @@ namespace Sfolador\Measures\Unit\Speed;
 
 use Sfolador\Measures\Unit\Measure;
 
-
 /**
  * @method Speed toMs() Convert to meters per second
  * @method Speed toKmh() Convert to kilometers per hour
