@@ -6,6 +6,7 @@ use Sfolador\Measures\MeasuresInterface;
 use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Energy\Energy;
 use Sfolador\Measures\Unit\Length\Length;
+use Sfolador\Measures\Unit\Power\Power;
 use Sfolador\Measures\Unit\Pressure\Pressure;
 use Sfolador\Measures\Unit\Speed\Speed;
 use Sfolador\Measures\Unit\Temperature\Temperature;
@@ -73,6 +74,12 @@ it('can convert an energy', function () {
     expect($measures->energy('1 J'))->toBeInstanceOf(Energy::class);
 });
 
+it('can convert a power', function () {
+    $measures = new Measures();
+
+    expect($measures->power('1 W'))->toBeInstanceOf(Power::class);
+});
+
 it('can be instantiated with a facade', function () {
     $measures = MeasuresFacade::length('2.0m');
     expect($measures)->toBeInstanceOf(Length::class);
@@ -98,5 +105,6 @@ it('can detect automatically the measure', function () {
         ->and(MeasuresFacade::from('2.0km/h'))->toBeInstanceOf(Speed::class)
         ->and(MeasuresFacade::from('2.0ns'))->toBeInstanceOf(Time::class)
         ->and(MeasuresFacade::from('2.0Pa'))->toBeInstanceOf(Pressure::class)
-        ->and(MeasuresFacade::from('2.0J'))->toBeInstanceOf(Energy::class);
+        ->and(MeasuresFacade::from('2.0J'))->toBeInstanceOf(Energy::class)
+        ->and(MeasuresFacade::from('2.0W'))->toBeInstanceOf(Power::class);
 });

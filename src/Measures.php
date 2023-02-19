@@ -7,6 +7,7 @@ use Sfolador\Measures\Unit\Area\Area;
 use Sfolador\Measures\Unit\Energy\Energy;
 use Sfolador\Measures\Unit\Length\Length;
 use Sfolador\Measures\Unit\Measure;
+use Sfolador\Measures\Unit\Power\Power;
 use Sfolador\Measures\Unit\Pressure\Pressure;
 use Sfolador\Measures\Unit\Speed\Speed;
 use Sfolador\Measures\Unit\Temperature\Temperature;
@@ -61,6 +62,11 @@ class Measures implements MeasuresInterface
         return Energy::from($expression);
     }
 
+    public function power(string $expression): Power
+    {
+        return Power::from($expression);
+    }
+
     public function from(string $expression): ?Measure
     {
         $measures = [
@@ -73,6 +79,7 @@ class Measures implements MeasuresInterface
             Time::class,
             Pressure::class,
             Energy::class,
+            Power::class,
         ];
 
         $results = null;
