@@ -75,8 +75,7 @@ it('can be instantiated with a facade through the app', function () {
         ->and($measuresWeight)->toBeInstanceOf(Weight::class);
 });
 
-
-it('can detect automatically the measure',function(){
+it('can detect automatically the measure', function () {
     expect(MeasuresFacade::from('2.0m'))->toBeInstanceOf(Length::class);
     expect(MeasuresFacade::from('2.0kg'))->toBeInstanceOf(Weight::class);
     expect(MeasuresFacade::from('2.0l'))->toBeInstanceOf(Volume::class);
@@ -84,5 +83,4 @@ it('can detect automatically the measure',function(){
     expect(MeasuresFacade::from('2.0km2'))->toBeInstanceOf(Area::class);
     expect(MeasuresFacade::from('2.0km/h'))->toBeInstanceOf(Speed::class);
     expect(MeasuresFacade::from('2.0ns'))->toBeInstanceOf(Time::class);
-
 });

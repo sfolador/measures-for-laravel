@@ -65,7 +65,7 @@ class Measures implements MeasuresInterface
         foreach ($measures as $measure) {
             try {
                 $results = $measure::from($expression);
-            }catch (Exception $e) {
+            } catch (Exception $e) {
                 continue;
             }
         }
