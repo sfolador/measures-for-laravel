@@ -2,6 +2,10 @@
 
 All notable changes to `measures-for-laravel` will be documented in this file.
 
+## Adde Volume cast - 2023-02-26
+
+Added Volume eloquent cast
+
 ## Fixed bugs - 2023-02-26
 
 - fixed a bug for reading null values with eloquent Measure cast
