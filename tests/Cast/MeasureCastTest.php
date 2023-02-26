@@ -1,12 +1,11 @@
 <?php
 
 use Sfolador\Measures\Facades\Measures as MeasuresFacade;
+use Sfolador\Measures\Facades\Measures as MeasuresFacade;
 use Sfolador\Measures\Tests\TestModels\CastableObject;
 use Sfolador\Measures\Unit\Length\Length;
 
-use Sfolador\Measures\Facades\Measures as MeasuresFacade;
-
-it('can have a null attribute',function(){
+it('can have a null attribute', function () {
     $a = CastableObject::factory()->create();
     expect($a->measure)->toBeNull();
 });
@@ -29,7 +28,7 @@ it('can retrieve an attribute', function () {
         ->and($b->measure->value)->toBe(1.0);
 });
 
-it('can retrieve an empty attribute',function(){
+it('can retrieve an empty attribute', function () {
     $a = CastableObject::factory()->create();
     $a->measure = null;
     $a->save();
@@ -37,9 +36,7 @@ it('can retrieve an empty attribute',function(){
     $b = CastableObject::find($a->id);
 
     expect($b->measure)->toBeNull();
-
 });
-
 
 it('saves measure as string in db', function () {
     $a = CastableObject::factory()->create([
