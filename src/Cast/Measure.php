@@ -27,6 +27,9 @@ class Measure implements CastsAttributes
 
     public function set($model, string $key, $value, array $attributes): string
     {
+        if (is_null($value)) {
+            return '';
+        }
         if (! $value instanceof \Sfolador\Measures\Unit\Measure) {
             throw new InvalidArgumentException("The value must be an instance of Sfolador\Measures\Unit\Measure");
         }
