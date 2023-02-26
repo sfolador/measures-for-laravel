@@ -27,6 +27,16 @@ it('can retrieve an attribute', function () {
         ->and($b->measure->value)->toBe(1.0);
 });
 
+it('can retrieve an empty attribute', function () {
+    $a = CastableObject::factory()->create();
+    $a->measure = null;
+    $a->save();
+
+    $b = CastableObject::find($a->id);
+
+    expect($b->measure)->toBeNull();
+});
+
 it('saves measure as string in db', function () {
     $a = CastableObject::factory()->create([
         'measure' => MeasuresFacade::from('1m'),
