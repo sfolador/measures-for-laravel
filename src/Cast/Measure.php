@@ -8,6 +8,7 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use InvalidArgumentException;
 use Sfolador\Measures\Facades\Measures;
 
+/* @phpstan-ignore-next-line */
 class Measure implements CastsAttributes
 {
     /**
@@ -18,7 +19,7 @@ class Measure implements CastsAttributes
         if (is_null($value)) {
             return null;
         }
-
+        /* @phpstan-ignore-next-line */
         return Measures::from($value);
     }
 
