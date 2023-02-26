@@ -2,6 +2,10 @@
 
 All notable changes to `measures-for-laravel` will be documented in this file.
 
+## Fixed bugs - 2023-02-26
+
+- fixed a bug for reading null values with eloquent Measure cast
+
 ## Eloquent cast - 2023-02-19
 
 It's now possible to cast an Eloquent attribute to a Measure
