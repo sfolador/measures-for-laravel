@@ -6,10 +6,9 @@ namespace Sfolador\Measures\Cast;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use InvalidArgumentException;
-use Sfolador\Measures\Facades\Measures;
 
 /* @phpstan-ignore-next-line */
-class Measure implements CastsAttributes
+class Volume implements CastsAttributes
 {
     /**
      * @return \Sfolador\Measures\Unit\Measure|null
@@ -20,7 +19,7 @@ class Measure implements CastsAttributes
             return null;
         }
         /* @phpstan-ignore-next-line */
-        return Measures::from($value);
+        return \Sfolador\Measures\Unit\Volume\Volume::from($value);
     }
 
     public function set($model, string $key, $value, array $attributes): ?string
@@ -28,8 +27,8 @@ class Measure implements CastsAttributes
         if (is_null($value)) {
             return null;
         }
-        if (! $value instanceof \Sfolador\Measures\Unit\Measure) {
-            throw new InvalidArgumentException("The value must be an instance of Sfolador\Measures\Unit\Measure");
+        if (! $value instanceof \Sfolador\Measures\Unit\Volume\Volume) {
+            throw new InvalidArgumentException("The value must be an instance of Sfolador\Measures\Unit\Volume\Volume");
         }
 
         return (string) $value;
