@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Sfolador\Measures;
@@ -41,10 +42,7 @@ interface MeasuresInterface
 
     public function angle(string $expression): Angle;
 
-
     public function data(string $expression): Data;
 
     public function from(string $expression): ?Measure;
-
-
 }
