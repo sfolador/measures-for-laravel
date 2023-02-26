@@ -4,7 +4,6 @@ use Sfolador\Measures\Facades\Measures as MeasuresFacade;
 use Sfolador\Measures\Tests\TestModels\CastableObject;
 use Sfolador\Measures\Unit\Length\Length;
 
-use Sfolador\Measures\Facades\Measures as MeasuresFacade;
 
 it('can have a null attribute',function(){
     $a = CastableObject::factory()->create();
