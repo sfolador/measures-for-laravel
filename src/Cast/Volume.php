@@ -18,6 +18,7 @@ class Volume implements CastsAttributes
         if (is_null($value)) {
             return null;
         }
+
         /* @phpstan-ignore-next-line */
         return \Sfolador\Measures\Unit\Volume\Volume::from($value);
     }

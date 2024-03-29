@@ -19,6 +19,7 @@ class Measure implements CastsAttributes
         if (is_null($value)) {
             return null;
         }
+
         /* @phpstan-ignore-next-line */
         return Measures::from($value);
     }

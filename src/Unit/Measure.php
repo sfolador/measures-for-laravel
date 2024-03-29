@@ -77,6 +77,7 @@ class Measure
         if (Str::of($results)->length() === Str::of($expression)->length()) {
             return Str::of($expression)->match('/[\d.+]+/')->value();
         }
+
         /* @phpstan-ignore-next-line */
         return $results;
     }
