@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Sfolador\Measures\Tests\TestCase;
 
-uses(TestCase::class, LazilyRefreshDatabase::class)->in(__DIR__);
+uses(TestCase::class, RefreshDatabase::class)->in(__DIR__);
