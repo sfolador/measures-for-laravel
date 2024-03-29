@@ -116,6 +116,6 @@ it('can write the number of seconds from minutes', function () {
     $rounded = round($time->to('seconds')->value, 10);
 
     expect($rounded)->toBe(60.0)
-    ->and((string) $time->to('seconds'))
-    ->toBe('60 s');
+        ->and((string) $time->to('seconds'))
+        ->toBe('60 s');
 });
