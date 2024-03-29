@@ -2,6 +2,14 @@
 
 All notable changes to `measures-for-laravel` will be documented in this file.
 
+## Added Laravel 11 compatibility - 2024-03-29
+
+### What's Changed
+
+* added Laravel 11 by @sfolador in https://github.com/sfolador/measures-for-laravel/pull/23
+
+**Full Changelog**: https://github.com/sfolador/measures-for-laravel/compare/0.1.7...0.1.8
+
 ## Adde Volume cast - 2023-02-26
 
 Added Volume eloquent cast
