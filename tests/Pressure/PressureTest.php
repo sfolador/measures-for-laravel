@@ -59,9 +59,6 @@ it('can convert bar to inches of mercury', function () {
         ->and(round($bar->toInchesOfMercury()->value, 2))->toBe(29.53);
 });
 
-
-
-
 it('can convert millibar to pascal', function () {
     $mbar = Pressure::from('1 mbar');
 

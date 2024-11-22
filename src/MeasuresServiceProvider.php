@@ -24,7 +24,7 @@ class MeasuresServiceProvider extends PackageServiceProvider
     public function registeringPackage(): void
     {
         $this->app->bind(MeasuresInterface::class, function () {
-            return new Measures();
+            return new Measures;
         });
     }
 }

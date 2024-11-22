@@ -17,79 +17,79 @@ use Sfolador\Measures\Unit\Volume\Volume;
 use Sfolador\Measures\Unit\Weight\Weight;
 
 it('can be instantiated', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures)->toBeInstanceOf(Measures::class);
 });
 
 it('can convert length', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->length('2.0m'))->toBeInstanceOf(Length::class);
 });
 
 it('can convert weight', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->weight('2.0g'))->toBeInstanceOf(Weight::class);
 });
 
 it('can convert volume', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->volume('2.0l'))->toBeInstanceOf(Volume::class);
 });
 
 it('can convert a temperature', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->temperature('200ºC'))->toBeInstanceOf(Temperature::class);
 });
 
 it('can convert an area', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->area('200km2'))->toBeInstanceOf(Area::class);
 });
 
 it('can convert a speed', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->speed('100 Km/h'))->toBeInstanceOf(Speed::class);
 });
 
 it('can convert a time', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->time('1 ns'))->toBeInstanceOf(Time::class);
 });
 
 it('can convert a pressure', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->pressure('1 pa'))->toBeInstanceOf(Pressure::class);
 });
 
 it('can convert an energy', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->energy('1 J'))->toBeInstanceOf(Energy::class);
 });
 
 it('can convert a power', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->power('1 W'))->toBeInstanceOf(Power::class);
 });
 
 it('can convert an angle', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->angle('1 rad'))->toBeInstanceOf(Angle::class);
 });
 
 it('can convert data', function () {
-    $measures = new Measures();
+    $measures = new Measures;
 
     expect($measures->data('1 B'))->toBeInstanceOf(Data::class);
 });
