@@ -58,3 +58,63 @@ it('can convert bar to inches of mercury', function () {
         ->and(round($bar->toInhg()->value, 2))->toBe(29.53)
         ->and(round($bar->toInchesOfMercury()->value, 2))->toBe(29.53);
 });
+
+
+
+
+it('can convert millibar to pascal', function () {
+    $mbar = Pressure::from('1 mbar');
+
+    expect(round($mbar->to('pa')->value, 1))->toBe(100.0)
+        ->and(round($mbar->toPa()->value, 1))->toBe(100.0)
+        ->and(round($mbar->toPascal()->value, 1))->toBe(100.0)
+        ->and((string) $mbar->toPascal())->toBe('100 Pa');
+});
+
+it('can convert millibar to kilopascal', function () {
+    $mbar = Pressure::from('1 mbar');
+
+    expect(round($mbar->to('kpa')->value, 1))->toBe(0.1)
+        ->and(round($mbar->toKpa()->value, 1))->toBe(0.1)
+        ->and(round($mbar->toKiloPascal()->value, 1))->toBe(0.1);
+});
+
+it('can convert millibar to megapascal', function () {
+    $mbar = Pressure::from('1 mbar');
+
+    expect($mbar->to('mpa')->value)->toBe(0.0001)
+        ->and($mbar->toMpa()->value)->toBe(0.0001)
+        ->and($mbar->toMegaPascal()->value)->toBe(0.0001);
+});
+
+it('can convert millibar to psi', function () {
+    $mbar = Pressure::from('1 mbar');
+
+    expect(round($mbar->to('psi')->value, 3))->toBe(0.015)
+        ->and(round($mbar->toPsi()->value, 3))->toBe(0.015)
+        ->and(round($mbar->toPoundPerSquareInch()->value, 3))->toBe(0.015);
+});
+
+it('can convert millibar to atmosphere', function () {
+    $mbar = Pressure::from('1 mbar');
+
+    expect(round($mbar->to('atm')->value, 3))->toBe(0.001)
+        ->and(round($mbar->toAtm()->value, 3))->toBe(0.001)
+        ->and(round($mbar->toAtmosphere()->value, 3))->toBe(0.001);
+});
+
+it('can convert millibar to torr', function () {
+    $mbar = Pressure::from('1 mbar');
+
+    expect(round($mbar->to('torr')->value, 3))->toBe(0.75)
+        ->and(round($mbar->toTorr()->value, 3))->toBe(0.75)
+        ->and(round($mbar->toMillimeterOfMercury()->value, 3))->toBe(0.75);
+});
+
+it('can convert millibar to inches of mercury', function () {
+    $mbar = Pressure::from('1 mbar');
+
+    expect(round($mbar->to('inhg')->value, 2))->toBe(0.03)
+        ->and(round($mbar->toInhg()->value, 2))->toBe(0.03)
+        ->and(round($mbar->toInchesOfMercury()->value, 2))->toBe(0.03);
+});

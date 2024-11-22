@@ -11,6 +11,7 @@ enum UnitsOfPressure: string implements Units
     use ConversionFactor;
 
     case BAR = 'bar';
+    case MBAR = 'mbar';
     case PASCAL = 'pa';
     case KILOPASCAL = 'kpa';
     case MEGAPASCAL = 'mpa';
@@ -24,6 +25,7 @@ enum UnitsOfPressure: string implements Units
     {
         return match ($this) {
             self::BAR => 1,
+            self::MBAR => 1 / 1000.0,
             self::PASCAL => 1 / 100000.0,
             self::KILOPASCAL => 1 / 100.0,
             self::MEGAPASCAL => 10.0,
@@ -38,6 +40,7 @@ enum UnitsOfPressure: string implements Units
     {
         return match ($this) {
             self::BAR => 'bar',
+            self::MBAR => 'mbar',
             self::PASCAL => 'Pa',
             self::KILOPASCAL => 'kPa',
             self::MEGAPASCAL => 'MPa',
@@ -53,6 +56,7 @@ enum UnitsOfPressure: string implements Units
     {
         return match ($unitName) {
             'bars' => self::BAR,
+            'millibars', 'millibar' => self::MBAR,
             'pascals','pascal' => self::PASCAL,
             'kilopascals','kilo pascals','kilopascal' => self::KILOPASCAL,
             'megapascals','mega pascals','megapascal' => self::MEGAPASCAL,
