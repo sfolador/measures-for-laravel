@@ -2,6 +2,17 @@
 
 All notable changes to `measures-for-laravel` will be documented in this file.
 
+## 0.1.9 - 2024-11-23
+
+### What's Changed
+
+* Fixed missing millibar
+* Bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/sfolador/measures-for-laravel/pull/25
+* Bump dependabot/fetch-metadata from 2.0.0 to 2.1.0 by @dependabot in https://github.com/sfolador/measures-for-laravel/pull/26
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/sfolador/measures-for-laravel/pull/27
+
+**Full Changelog**: https://github.com/sfolador/measures-for-laravel/compare/0.1.8...0.1.9
+
 ## Added Laravel 11 compatibility - 2024-03-29
 
 ### What's Changed
