@@ -78,10 +78,14 @@ class Measure
             return Str::of($expression)->match('/[\d.+]+/')->value();
         }
 
-        /* @phpstan-ignore-next-line */
+
         return $results;
     }
 
+    /**
+     * @param string $expression
+     * @return array{float, Units}
+     */
     public static function getValueAndUnit(string $expression): array
     {
         $value = static::extractValue($expression);
@@ -107,6 +111,8 @@ class Measure
     }
 
     /**
+     * @param string $name
+     * @param array<mixed,mixed> $arguments
      * @return Measure
      */
     public function __call(string $name, array $arguments)
